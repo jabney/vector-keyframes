@@ -7,6 +7,7 @@
   "author": "James Abney <james.abney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0"
   }
 }
