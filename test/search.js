@@ -34,15 +34,15 @@ describe('binary search', function () {
 
   it('finds values in O(lg(n)) time', function () {
     var maxSize = 1e3
-    var skip = 10
+    var skip = 100
     var list, size, find, found, compares, maxCompares
 
     // Generate lists of size [skip,maxSize]
     for (size = skip; size <= maxSize; size += skip) {
-      list = _.range(0, size, skip)
+      list = _.range(0, size)
       maxCompares = 0
 
-      for (find = 0; find < size; find += skip) {
+      for (find = 0; find < size; ++find) {
         compares = 0
 
         found = search.binary(list, find, function (candidate, target) {
