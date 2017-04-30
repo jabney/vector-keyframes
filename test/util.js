@@ -1,7 +1,5 @@
 var assert = require('assert')
-// var expect = require('chai').expect
 var util = require('../index').util
-// var _ = require('lodash')
 
 describe('utilities', function () {
 
@@ -23,7 +21,7 @@ describe('utilities', function () {
     })
   })
 
-  describe('smooth', function () {
+  describe('smoothInterpolate', function () {
     it('interpolates between two scalars', function () {
       var start = 1
       var end = 2
@@ -54,4 +52,21 @@ describe('utilities', function () {
     })
   })
 
+  describe('vectorToHex', function () {
+    it('converts 3d byte vector to hex color', function () {
+      var vector, hex
+
+      vector = [0, 0, 0]
+      hex = util.vectorToHex(vector)
+      assert.equal(hex, '#000000')
+
+      vector = [127, 127, 127]
+      hex = util.vectorToHex(vector)
+      assert.equal(hex, '#7f7f7f')
+
+      vector = [255, 255, 255]
+      hex = util.vectorToHex(vector)
+      assert.equal(hex, '#ffffff')
+    })
+  })
 })
