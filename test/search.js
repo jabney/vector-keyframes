@@ -1,5 +1,4 @@
 var assert = require('assert')
-// var expect = require('chai').expect
 var search = require('../index').search
 var _ = require('lodash')
 
