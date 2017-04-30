@@ -53,7 +53,7 @@ describe('utilities', function () {
   })
 
   describe('vectorToHex', function () {
-    it('converts 3d byte vector to hex color', function () {
+    it('converts 3d byte vector to 6-digit hex color', function () {
       var vector, hex
 
       vector = [0, 0, 0]
@@ -67,6 +67,24 @@ describe('utilities', function () {
       vector = [255, 255, 255]
       hex = util.vectorToHex(vector)
       assert.equal(hex, '#ffffff')
+    })
+  })
+
+  describe('hexToVector', function () {
+    it('converts 6-digit hex color to a 3d byte vector', function () {
+      var hex, vector
+
+      hex = '#000000'
+      vector = util.hexToVector(hex)
+      assert.deepEqual(vector, [0, 0, 0])
+
+      hex = '#7f7f7f'
+      vector = util.hexToVector(hex)
+      assert.deepEqual(vector, [127, 127, 127])
+
+      hex = '#ffffff'
+      vector = util.hexToVector(hex)
+      assert.deepEqual(vector, [255, 255, 255])
     })
   })
 })
