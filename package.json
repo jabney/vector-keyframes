@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:jabney/vector-keyframes.git",
   "author": "James Abney <james.abney@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "lodash": "^4.17.4"
+  }
 }
