@@ -1,5 +1,5 @@
 var assert = require('assert')
-var expect = require('chai').expect
+// var expect = require('chai').expect
 var search = require('../index').search
 var _ = require('lodash')
 
@@ -57,8 +57,10 @@ describe('binary search', function () {
           }
         })
 
-        expect(find).to.equal(found)
-        expect(maxCompares).to.be.at.most(Math.floor(Math.log2(size)) + 1)
+        assert.equal(find, found, 'found the target value')
+
+        assert(maxCompares <= Math.floor(Math.log2(size)) + 1,
+          'maxCompares <= log2(list_size) + 1')
       }
     }
   })
