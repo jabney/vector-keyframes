@@ -102,8 +102,8 @@ const util = {
     return a + util.smooth(t)*(b-a)
   },
 
-  vectorToHex(color) {
-    const hexColor = '#' + color.map((c) => {
+  vectorToHex(vector) {
+    const hexColor = '#' + vector.map((c) => {
       const byte = Math.round(c)
       const hex = byte.toString(16)
       return hex.length == 1 ? '0' + hex : hex
