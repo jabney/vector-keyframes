@@ -11,7 +11,7 @@ or
 
 
 ## Examples
-See examples.js
+See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
 
     var vk = require('vector-keyframes')
     var scalar = vk.scalar
