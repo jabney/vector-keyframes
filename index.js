@@ -121,6 +121,9 @@ const util = {
   },
 
   vectorToRgb(vector) {
+    vector = vector.map(function (byte) {
+      return Math.round(byte)
+    })
     return 'rgb(' + vector + ')'
   },
 
