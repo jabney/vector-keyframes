@@ -80,7 +80,7 @@ describe('vector2d', function () {
     it('returns the first keyframe when only one is present', function () {
       const keyframes = [{
         stop: 0,
-        vector: [255,255]
+        value: [255,255]
       }]
       let vector
 
@@ -97,10 +97,10 @@ describe('vector2d', function () {
     it('interpolates between two keyframes', function () {
       const keyframes = [{
         stop: 0,
-        vector: [0,0]
+        value: [0,0]
       }, {
         stop: 1,
-        vector: [255,255]
+        value: [255,255]
       }]
       let vector
 
@@ -117,13 +117,13 @@ describe('vector2d', function () {
     it('interpolates between three keyframes', function () {
       const keyframes = [{
         stop: 0,
-        vector: [0,0]
+        value: [0,0]
       }, {
         stop: 0.5,
-        vector: [48,96]
+        value: [48,96]
       }, {
         stop: 1,
-        vector: [255,255]
+        value: [255,255]
       }]
       let vector
 
@@ -140,13 +140,13 @@ describe('vector2d', function () {
     it('clamps first and last keyframes', function () {
       const keyframes = [{
         stop: 0.25,
-        vector: [0,0]
+        value: [0,0]
       }, {
         stop: 0.5,
-        vector: [127,127]
+        value: [127,127]
       }, {
         stop: 0.75,
-        vector: [255,255]
+        value: [255,255]
       }]
       let vector
 
@@ -169,10 +169,10 @@ describe('vector2d', function () {
     it('interpolates smooth or linear', function () {
       const keyframes = [{
         stop: 0,
-        vector: [0,0]
+        value: [0,0]
       }, {
         stop: 1,
-        vector: [255,255]
+        value: [255,255]
       }]
       let smooth, linear
 

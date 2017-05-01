@@ -49,15 +49,15 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
   }
 
   if (keyframes.length === 1) {
-    return keyframes[first].vector
+    return keyframes[first].value
   }
 
   if (t < keyframes[first].stop) {
-    return keyframes[first].vector
+    return keyframes[first].value
   }
 
   if (t > keyframes[last].stop) {
-    return keyframes[last].vector
+    return keyframes[last].value
   }
 
   const pairs = []
@@ -78,7 +78,7 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
     const [a, b] = pair
     const t_segment = (t - a.stop) / (b.stop - a.stop)
     const interpolate = timingToInterpFn(timing, lib)
-    return interpolate(a.vector, b.vector, t_segment)
+    return interpolate(a.value, b.value, t_segment)
   }
 
   return lib.zero()
