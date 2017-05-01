@@ -1,3 +1,5 @@
+[demo]: https://raw.githubusercontent.com/jabney/vector-keyframes/master/meta/demo.gif
+
 # vector-keyframes
 Interpolate between any number of scalar, 2d, or 3d vector keyframes with a focus on colors
 
@@ -9,9 +11,7 @@ or
 
     yarn add vector-keyframes
 
-<div style="text-align:center">
-<img src="https://raw.githubusercontent.com/jabney/vector-keyframes/master/meta/demo.gif" />
-</div>
+![keyframe demo][demo]
 
 ## Examples
 See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
