@@ -1,5 +1,9 @@
 # Change log for Vector Keyframes
 
+## [v0.1.3] - 01-05-2017
+### Changed
+- Prebuild project
+
 ## [v0.1.2] - 01-05-2017
 ### Changed
 - Update .npmignore
