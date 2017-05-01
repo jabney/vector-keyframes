@@ -92,14 +92,6 @@ const util = {
     return 3 * Math.pow(t, 2) - 2 * Math.pow(t, 3)
   },
 
-  linearInterpolate(a, b, t) {
-    return a + t*(b-a)
-  },
-
-  smoothInterpolate(a, b, t) {
-    return a + util.smooth(t)*(b-a)
-  },
-
   vectorToHex(vector) {
     const hexColor = '#' + vector.map((c) => {
       const byte = Math.round(c)
@@ -147,11 +139,11 @@ const scalar = {
   },
 
   linearInterpolate(a, b, t) {
-    return util.linearInterpolate(a, b, t)
+    return a + t*(b-a)
   },
 
   smoothInterpolate(a, b, t) {
-    return util.smoothInterpolate(a, b, t)
+    return a + util.smooth(t)*(b-a)
   },
 
   keyframeInterpolate(keyframes, t, timing='linear') {
@@ -166,7 +158,7 @@ const vector2d = {
   },
 
   linearInterpolate(a, b, t) {
-    const lerp = util.linearInterpolate
+    const lerp = scalar.linearInterpolate
     return [
       lerp(a[0], b[0], t),
       lerp(a[1], b[1], t)
@@ -174,7 +166,7 @@ const vector2d = {
   },
 
   smoothInterpolate(a, b, t) {
-    const lerp = util.smoothInterpolate
+    const lerp = scalar.smoothInterpolate
     return [
       lerp(a[0], b[0], t),
       lerp(a[1], b[1], t)
@@ -193,7 +185,7 @@ const vector3d = {
   },
 
   linearInterpolate(a, b, t) {
-    const lerp = util.linearInterpolate
+    const lerp = scalar.linearInterpolate
     return [
       lerp(a[0], b[0], t),
       lerp(a[1], b[1], t),
@@ -202,7 +194,7 @@ const vector3d = {
   },
 
   smoothInterpolate(a, b, t) {
-    const lerp = util.smoothInterpolate
+    const lerp = scalar.smoothInterpolate
     return [
       lerp(a[0], b[0], t),
       lerp(a[1], b[1], t),
@@ -217,5 +209,6 @@ const vector3d = {
 
 exports.util = util
 exports.search = search
+exports.scalar = scalar
 exports.vector2d = vector2d
 exports.vector3d = vector3d
