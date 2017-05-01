@@ -1,5 +1,5 @@
-var assert = require('assert')
-var vector3d = require('../index').vector3d
+const assert = require('assert')
+const vector3d = require('../index').vector3d
 
 describe('vector3d', function () {
 
@@ -12,9 +12,9 @@ describe('vector3d', function () {
 
   describe('linearInterpolate', function () {
     it('interpolates between two 3d vectors', function () {
-      var start = [0, 1, 2]
-      var end = [1, 2, 3]
-      var result
+      const start = [0, 1, 2]
+      const end = [1, 2, 3]
+      let result
 
       result = vector3d.linearInterpolate(start, end, 0)
       assert.deepEqual(result, start, 't=0 results in start vector')
@@ -30,9 +30,9 @@ describe('vector3d', function () {
 
   describe('smoothInterpolate', function () {
     it('interpolates between two 3d vectors', function () {
-      var start = [0, 1, 2]
-      var end = [1, 2, 3]
-      var result
+      const start = [0, 1, 2]
+      const end = [1, 2, 3]
+      let result
 
       result = vector3d.linearInterpolate(start, end, 0)
       assert.deepEqual(result, start, 't=0 results in start vector')
@@ -46,9 +46,9 @@ describe('vector3d', function () {
     })
 
     it('has slow start and fast finish', function () {
-      var start = [0, 1, 2]
-      var end = [1, 2, 3]
-      var smooth, linear
+      const start = [0, 1, 2]
+      const end = [1, 2, 3]
+      let smooth, linear
 
       smooth = vector3d.smoothInterpolate(start, end, 0.1)
       linear = vector3d.linearInterpolate(start, end, 0.1)
@@ -67,7 +67,7 @@ describe('vector3d', function () {
   describe('keyframeInterpolate', function () {
 
     it('returns the zero vector for empty keyframes', function () {
-      var vector
+      let vector
 
       vector = vector3d.keyframeInterpolate([], 0)
       assert.deepEqual(vector, [0,0,0])
@@ -80,11 +80,11 @@ describe('vector3d', function () {
     })
 
     it('returns the first keyframe when only one is present', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [255,255,255]
       }]
-      var vector
+      let vector
 
       vector = vector3d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [255,255,255])
@@ -97,14 +97,14 @@ describe('vector3d', function () {
     })
 
     it('interpolates between two keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0,0]
       }, {
         stop: 1,
         vector: [255,255,255]
       }]
-      var vector
+      let vector
 
       vector = vector3d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0,0])
@@ -117,7 +117,7 @@ describe('vector3d', function () {
     })
 
     it('interpolates between three keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0,0]
       }, {
@@ -127,7 +127,7 @@ describe('vector3d', function () {
         stop: 1,
         vector: [255,255,255]
       }]
-      var vector
+      let vector
 
       vector = vector3d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0,0])
@@ -140,7 +140,7 @@ describe('vector3d', function () {
     })
 
     it('clamps first and last keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0.25,
         vector: [0,0,0]
       }, {
@@ -150,7 +150,7 @@ describe('vector3d', function () {
         stop: 0.75,
         vector: [255,255,255]
       }]
-      var vector
+      let vector
 
       vector = vector3d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0,0])
@@ -169,14 +169,14 @@ describe('vector3d', function () {
     })
 
     it('interpolates smooth or linear', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0,0]
       }, {
         stop: 1,
         vector: [255,255,255]
       }]
-      var smooth, linear
+      let smooth, linear
 
       smooth = vector3d.keyframeInterpolate(keyframes, 0, 'smooth')
       linear = vector3d.keyframeInterpolate(keyframes, 0, 'linear')

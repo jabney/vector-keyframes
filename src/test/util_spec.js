@@ -1,14 +1,14 @@
-var assert = require('assert')
-var util = require('../index').util
+const assert = require('assert')
+const util = require('../index').util
 
 describe('utilities', function () {
 
   describe('linearInterpolate', function () {
 
     it('interpolates between two scalars', function () {
-      var start = 1
-      var end = 2
-      var result
+      const start = 1
+      const end = 2
+      let result
 
       result = util.linearInterpolate(start, end, 0)
       assert.equal(result, start, 't=0 results in start value')
@@ -23,9 +23,9 @@ describe('utilities', function () {
 
   describe('smoothInterpolate', function () {
     it('interpolates between two scalars', function () {
-      var start = 1
-      var end = 2
-      var result
+      const start = 1
+      const end = 2
+      let result
 
       result = util.linearInterpolate(start, end, 0)
       assert.equal(result, start, 't=0 results in start value')
@@ -38,9 +38,9 @@ describe('utilities', function () {
     })
 
     it('has slow start and fast finish', function () {
-      var start = 1
-      var end = 2
-      var smooth, linear
+      const start = 1
+      const end = 2
+      let smooth, linear
 
       smooth = util.smoothInterpolate(start, end, 0.1)
       linear = util.linearInterpolate(start, end, 0.1)
@@ -54,7 +54,7 @@ describe('utilities', function () {
 
   describe('vectorToHex', function () {
     it('converts 3d byte vector to 6-digit hex color', function () {
-      var vector, hex
+      let vector, hex
 
       vector = [0, 0, 0]
       hex = util.vectorToHex(vector)
@@ -72,7 +72,7 @@ describe('utilities', function () {
 
   describe('hexToVector', function () {
     it('converts 6-digit hex color to a 3d byte vector', function () {
-      var hex, vector
+      let hex, vector
 
       hex = '#000000'
       vector = util.hexToVector(hex)
@@ -90,14 +90,14 @@ describe('utilities', function () {
 
   describe('vectorToRgb', function () {
     it('converts vector to rgb color string', function () {
-      var rgbColor = util.vectorToRgb([0,127.4,254.6])
+      const rgbColor = util.vectorToRgb([0,127.4,254.6])
       assert.equal(rgbColor, 'rgb(0,127,255)')
     })
   })
 
   describe('rgbToVector', function () {
     it('converts rgb color string to vector', function () {
-      var vector = util.rgbToVector('rgb( 0,127, 255)')
+      const vector = util.rgbToVector('rgb( 0,127, 255)')
       assert.deepStrictEqual(vector, [0,127,255])
     })
   })

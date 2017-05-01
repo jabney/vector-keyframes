@@ -1,5 +1,5 @@
-var assert = require('assert')
-var vector2d = require('../index').vector2d
+const assert = require('assert')
+const vector2d = require('../index').vector2d
 
 describe('vector2d', function () {
 
@@ -12,9 +12,9 @@ describe('vector2d', function () {
 
   describe('linearInterpolate', function () {
     it('interpolates between two 2d vectors', function () {
-      var start = [0, 1]
-      var end = [1, 2]
-      var result
+      const start = [0, 1]
+      const end = [1, 2]
+      let result
 
       result = vector2d.linearInterpolate(start, end, 0)
       assert.deepEqual(result, start, 't=0 results in start vector')
@@ -30,9 +30,9 @@ describe('vector2d', function () {
 
   describe('smoothInterpolate', function () {
     it('interpolates between two 2d vectors', function () {
-      var start = [0, 1]
-      var end = [1, 2]
-      var result
+      const start = [0, 1]
+      const end = [1, 2]
+      let result
 
       result = vector2d.linearInterpolate(start, end, 0)
       assert.deepEqual(result, start, 't=0 results in start vector')
@@ -46,9 +46,9 @@ describe('vector2d', function () {
     })
 
     it('has slow start and fast finish', function () {
-      var start = [0, 1]
-      var end = [1, 2]
-      var smooth, linear
+      const start = [0, 1]
+      const end = [1, 2]
+      let smooth, linear
 
       smooth = vector2d.smoothInterpolate(start, end, 0.1)
       linear = vector2d.linearInterpolate(start, end, 0.1)
@@ -65,7 +65,7 @@ describe('vector2d', function () {
   describe('keyframeInterpolate', function () {
 
     it('returns the zero vector for empty keyframes', function () {
-      var vector
+      let vector
 
       vector = vector2d.keyframeInterpolate([], 0)
       assert.deepEqual(vector, [0,0])
@@ -78,11 +78,11 @@ describe('vector2d', function () {
     })
 
     it('returns the first keyframe when only one is present', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [255,255]
       }]
-      var vector
+      let vector
 
       vector = vector2d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [255,255])
@@ -95,14 +95,14 @@ describe('vector2d', function () {
     })
 
     it('interpolates between two keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0]
       }, {
         stop: 1,
         vector: [255,255]
       }]
-      var vector
+      let vector
 
       vector = vector2d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0])
@@ -115,7 +115,7 @@ describe('vector2d', function () {
     })
 
     it('interpolates between three keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0]
       }, {
@@ -125,7 +125,7 @@ describe('vector2d', function () {
         stop: 1,
         vector: [255,255]
       }]
-      var vector
+      let vector
 
       vector = vector2d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0])
@@ -138,7 +138,7 @@ describe('vector2d', function () {
     })
 
     it('clamps first and last keyframes', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0.25,
         vector: [0,0]
       }, {
@@ -148,7 +148,7 @@ describe('vector2d', function () {
         stop: 0.75,
         vector: [255,255]
       }]
-      var vector
+      let vector
 
       vector = vector2d.keyframeInterpolate(keyframes, 0)
       assert.deepEqual(vector, [0,0])
@@ -167,14 +167,14 @@ describe('vector2d', function () {
     })
 
     it('interpolates smooth or linear', function () {
-      var keyframes = [{
+      const keyframes = [{
         stop: 0,
         vector: [0,0]
       }, {
         stop: 1,
         vector: [255,255]
       }]
-      var smooth, linear
+      let smooth, linear
 
       smooth = vector2d.keyframeInterpolate(keyframes, 0, 'smooth')
       linear = vector2d.keyframeInterpolate(keyframes, 0, 'linear')
