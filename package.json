@@ -2,6 +2,7 @@
   "name": "vector-keyframes",
   "version": "0.1.0",
   "description": "Interpolate between any number of 2d or 3d vector keyframes",
+  "keywords": ["vector", "keyframe", "interpolation", "color"],
   "main": "index.js",
   "repository": "git@github.com:jabney/vector-keyframes.git",
   "author": "James Abney <james.abney@gmail.com>",
