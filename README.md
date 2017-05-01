@@ -10,8 +10,8 @@ or
     yarn add vector-keyframes
 
 <div style="text-align:center">
-  <img src="https://raw.githubusercontent.com/jabney/vector-keyframes/master/meta/demo.gif" />
-</div
+<img src="https://raw.githubusercontent.com/jabney/vector-keyframes/master/meta/demo.gif" />
+</div>
 
 ## Examples
 See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
