@@ -4,4 +4,4 @@
 ### Initial Release
 - src/index.js: one-and-only source file
 - src/test/*_spec.js: unit tests
-
+- example.js: usage examples
