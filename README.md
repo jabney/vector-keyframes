@@ -13,7 +13,7 @@ or
 ## Examples
 See examples.js
 
-    var vk = require('./index')
+    var vk = require('vector-keyframes')
     var scalar = vk.scalar
     var vector2d = vk.vector2d
     var vector3d = vk.vector3d
