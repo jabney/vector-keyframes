@@ -112,12 +112,23 @@ const util = {
     return hexColor
   },
 
-  hexToVector(color) {
-    const hex = color.slice(1)
+  hexToVector(hexColor) {
+    const hex = hexColor.slice(1)
     const r = parseInt(hex.slice(0, 2), 16)
     const g = parseInt(hex.slice(2, 4), 16)
     const b = parseInt(hex.slice(4, 6), 16)
     return [r, g, b]
+  },
+
+  vectorToRgb(vector) {
+    return 'rgb(' + vector + ')'
+  },
+
+  rgbToVector(rgbColor) {
+    var list = rgbColor.split(/[(), ]+/)
+    return list.slice(1,4).map(function (s) {
+      return +s
+    })
   }
 }
 
