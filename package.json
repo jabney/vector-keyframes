@@ -2,13 +2,17 @@
   "name": "vector-keyframes",
   "version": "0.1.0",
   "description": "Interpolate between any number of 2d or 3d vector keyframes",
-  "keywords": ["vector", "keyframe", "interpolation", "color"],
+  "keywords": [
+    "vector",
+    "keyframe",
+    "interpolation",
+    "color"
+  ],
   "main": "index.js",
   "repository": "git@github.com:jabney/vector-keyframes.git",
   "author": "James Abney <james.abney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
     "lodash": "^4.17.4",
     "mocha": "^3.3.0"
   },
