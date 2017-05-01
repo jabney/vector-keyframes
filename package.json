@@ -20,6 +20,6 @@
   },
   "scripts": {
     "build": "babel src -d .",
-    "test": "mocha"
+    "test": "npm run build && mocha"
   }
 }
