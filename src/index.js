@@ -92,7 +92,7 @@ const util = {
     return 3 * Math.pow(t, 2) - 2 * Math.pow(t, 3)
   },
 
-  vectorToHex(vector) {
+  vector3dToHex(vector) {
     const hexColor = '#' + vector.map((c) => {
       const byte = Math.round(c)
       const hex = byte.toString(16)
@@ -102,7 +102,7 @@ const util = {
     return hexColor
   },
 
-  hexToVector(hexColor) {
+  hexToVector3d(hexColor) {
     const hex = hexColor.slice(1)
     const r = parseInt(hex.slice(0, 2), 16)
     const g = parseInt(hex.slice(2, 4), 16)
@@ -110,14 +110,14 @@ const util = {
     return [r, g, b]
   },
 
-  vectorToRgb(vector) {
+  vector3dToRgb(vector) {
     vector = vector.map(function (byte) {
       return Math.round(byte)
     })
     return 'rgb(' + vector + ')'
   },
 
-  rgbToVector(rgbColor) {
+  rgbToVector3d(rgbColor) {
     var list = rgbColor.split(/[(), ]+/)
     return list.slice(1,4).map(function (s) {
       return +s
