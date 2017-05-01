@@ -3,55 +3,6 @@ const util = require('../index').util
 
 describe('utilities', function () {
 
-  describe('linearInterpolate', function () {
-
-    it('interpolates between two scalars', function () {
-      const start = 1
-      const end = 2
-      let result
-
-      result = util.linearInterpolate(start, end, 0)
-      assert.equal(result, start, 't=0 results in start value')
-
-      result = util.linearInterpolate(start, end, 1)
-      assert.equal(result, end, 't=1 results in end value')
-
-      result = util.linearInterpolate(start, end, 0.5)
-      assert.equal(result, (start+end)/2, 't=0.5 results in start+end midpoint')
-    })
-  })
-
-  describe('smoothInterpolate', function () {
-    it('interpolates between two scalars', function () {
-      const start = 1
-      const end = 2
-      let result
-
-      result = util.linearInterpolate(start, end, 0)
-      assert.equal(result, start, 't=0 results in start value')
-
-      result = util.linearInterpolate(start, end, 1)
-      assert.equal(result, end, 't=1 results in end value')
-
-      result = util.linearInterpolate(start, end, 0.5)
-      assert.equal(result, (start+end)/2, 't=0.5 results in start+end midpoint')
-    })
-
-    it('has slow start and fast finish', function () {
-      const start = 1
-      const end = 2
-      let smooth, linear
-
-      smooth = util.smoothInterpolate(start, end, 0.1)
-      linear = util.linearInterpolate(start, end, 0.1)
-      assert(smooth < linear, 'starts slower than linear')
-
-      smooth = util.smoothInterpolate(start, end, 0.9)
-      linear = util.linearInterpolate(start, end, 0.9)
-      assert(smooth > linear, 'finishes faster than linear')
-    })
-  })
-
   describe('vectorToHex', function () {
     it('converts 3d byte vector to 6-digit hex color', function () {
       let vector, hex
