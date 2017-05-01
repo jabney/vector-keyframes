@@ -154,7 +154,7 @@ const scalar = {
     return util.smoothInterpolate(a, b, t)
   },
 
-  keyframeInterpolate(keyframes, t, timing='smooth') {
+  keyframeInterpolate(keyframes, t, timing='linear') {
     return keyframeInterpolate(keyframes, t, timing, scalar)
   }
 }
@@ -181,7 +181,7 @@ const vector2d = {
     ]
   },
 
-  keyframeInterpolate(keyframes, t, timing='smooth') {
+  keyframeInterpolate(keyframes, t, timing='linear') {
     return keyframeInterpolate(keyframes, t, timing, vector2d)
   }
 }
@@ -210,7 +210,7 @@ const vector3d = {
     ]
   },
 
-  keyframeInterpolate(keyframes, t, timing='smooth') {
+  keyframeInterpolate(keyframes, t, timing='linear') {
     return keyframeInterpolate(keyframes, t, timing, vector3d)
   }
 }
