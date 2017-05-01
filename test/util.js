@@ -87,4 +87,18 @@ describe('utilities', function () {
       assert.deepEqual(vector, [255, 255, 255])
     })
   })
+
+  describe('vectorToRgb', function () {
+    it('converts vector to rgb color string', function () {
+      var rgbColor = util.vectorToRgb([0,127,255])
+      assert.equal(rgbColor, 'rgb(0,127,255)')
+    })
+  })
+
+  describe('rgbToVector', function () {
+    it('converts rgb color string to vector', function () {
+      var vector = util.rgbToVector('rgb( 0,127, 255)')
+      assert.deepStrictEqual(vector, [0,127,255])
+    })
+  })
 })
