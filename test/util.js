@@ -90,7 +90,7 @@ describe('utilities', function () {
 
   describe('vectorToRgb', function () {
     it('converts vector to rgb color string', function () {
-      var rgbColor = util.vectorToRgb([0,127,255])
+      var rgbColor = util.vectorToRgb([0,127.4,254.6])
       assert.equal(rgbColor, 'rgb(0,127,255)')
     })
   })
