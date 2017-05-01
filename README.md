@@ -22,31 +22,33 @@ See examples.js
 ### scalar
 `scalar` provides a set of interpolation methods that `vector2d` and `vector3d` are built on.
 
-    var keyframes = [{
-      stop: 0,
-      value: 0
-    }, {
-      stop: 0.5,
-      value: 1
-    }, {
-      stop: 1,
-      value: 0
-    }]
+```javascript
+var keyframes = [{
+  stop: 0,
+  value: 0
+}, {
+  stop: 0.5,
+  value: 1
+}, {
+  stop: 1,
+  value: 0
+}]
 
-    console.log('linear   (t=0):',
-      scalar.keyframeInterpolate(keyframes, 0))
+console.log('linear   (t=0):',
+  scalar.keyframeInterpolate(keyframes, 0))
 
-    console.log('linear (t=0.5):',
-      scalar.keyframeInterpolate(keyframes, 0.5))
+console.log('linear (t=0.5):',
+  scalar.keyframeInterpolate(keyframes, 0.5))
 
-    console.log('linear   (t=1):',
-      scalar.keyframeInterpolate(keyframes, 1))
+console.log('linear   (t=1):',
+  scalar.keyframeInterpolate(keyframes, 1))
 
-    console.log('linear (t=0.1):',
-      scalar.keyframeInterpolate(keyframes, 0.1))
+console.log('linear (t=0.1):',
+  scalar.keyframeInterpolate(keyframes, 0.1))
 
-    console.log('smooth (t=0.1):',
-      scalar.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+console.log('smooth (t=0.1):',
+  scalar.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+```
 
 Output:
 
@@ -59,31 +61,33 @@ Output:
 ### vector2d
 `vector2d` iterpolates between 2d vectors.
 
-    var keyframes = [{
-      stop: 0,
-      value: [0, 100]
-    }, {
-      stop: 0.5,
-      value: [100, 100]
-    }, {
-      stop: 1,
-      value: [100, 0]
-    }]
+```javascript
+var keyframes = [{
+  stop: 0,
+  value: [0, 100]
+}, {
+  stop: 0.5,
+  value: [100, 100]
+}, {
+  stop: 1,
+  value: [100, 0]
+}]
 
-    console.log('linear   (t=0):',
-      vector2d.keyframeInterpolate(keyframes, 0))
+console.log('linear   (t=0):',
+  vector2d.keyframeInterpolate(keyframes, 0))
 
-    console.log('linear (t=0.5):',
-      vector2d.keyframeInterpolate(keyframes, 0.5))
+console.log('linear (t=0.5):',
+  vector2d.keyframeInterpolate(keyframes, 0.5))
 
-    console.log('linear   (t=1):',
-      vector2d.keyframeInterpolate(keyframes, 1))
+console.log('linear   (t=1):',
+  vector2d.keyframeInterpolate(keyframes, 1))
 
-    console.log('linear (t=0.1):',
-      vector2d.keyframeInterpolate(keyframes, 0.1))
+console.log('linear (t=0.1):',
+  vector2d.keyframeInterpolate(keyframes, 0.1))
 
-    console.log('smooth (t=0.1):',
-      vector2d.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+console.log('smooth (t=0.1):',
+  vector2d.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+```
 
 Output:
 
@@ -96,31 +100,33 @@ Output:
 ### vector3d
 `vector3d` interpolates between 3d vectors. The `util` library provides some conversion helpers.
 
-    var keyframes = [{
-      stop: 0,
-      value: [0, 0, 255]
-    }, {
-      stop: 0.5,
-      value: [0, 255, 0]
-    }, {
-      stop: 1,
-      value: [0, 0, 255]
-    }]
+```javascript
+var keyframes = [{
+  stop: 0,
+  value: [0, 0, 255]
+}, {
+  stop: 0.5,
+  value: [0, 255, 0]
+}, {
+  stop: 1,
+  value: [0, 0, 255]
+}]
 
-    var result = vector3d.keyframeInterpolate(keyframes, 0.25)
-    console.log('vector    (t=0.25):', result)
-    console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
-    console.log('hex color (t=0.25):', util.vector3dToHex(result))
+var result = vector3d.keyframeInterpolate(keyframes, 0.25)
+console.log('vector    (t=0.25):', result)
+console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
+console.log('hex color (t=0.25):', util.vector3dToHex(result))
 
-    result = vector3d.keyframeInterpolate(keyframes, 0.5)
-    console.log('vector    (t=0.5):', result)
-    console.log('rgb color (t=0.5):', util.vector3dToRgb(result))
-    console.log('hex color (t=0.5):', util.vector3dToHex(result))
+result = vector3d.keyframeInterpolate(keyframes, 0.5)
+console.log('vector    (t=0.5):', result)
+console.log('rgb color (t=0.5):', util.vector3dToRgb(result))
+console.log('hex color (t=0.5):', util.vector3dToHex(result))
 
-    result = vector3d.keyframeInterpolate(keyframes, 0.9)
-    console.log('vector    (t=0.9):', result)
-    console.log('rgb color (t=0.9):', util.vector3dToRgb(result))
-    console.log('hex color (t=0.9):', util.vector3dToHex(result))
+result = vector3d.keyframeInterpolate(keyframes, 0.9)
+console.log('vector    (t=0.9):', result)
+console.log('rgb color (t=0.9):', util.vector3dToRgb(result))
+console.log('hex color (t=0.9):', util.vector3dToHex(result))
+```
 
 Output:
 
@@ -138,54 +144,56 @@ Output:
 Custom interpolation can be achieved by providing a base library and defining
 certain methods within:
 
-    // Create a base 'alpha' library which defines its own interpolation
-    // methods, making use of the ones in the 'scalar' lib.
-    var alpha = {
+```javascript
+// Create a base 'alpha' library which defines its own interpolation
+// methods, making use of the ones in the 'scalar' lib.
+var alpha = {
 
-      zero() {
-        return '*'
-      },
+  zero() {
+    return '*'
+  },
 
-      linearInterpolate(a, b, t) {
-        return vk.scalar.linearInterpolate(a.charCodeAt(0), b.charCodeAt(0), t)
-      },
+  linearInterpolate(a, b, t) {
+    return vk.scalar.linearInterpolate(a.charCodeAt(0), b.charCodeAt(0), t)
+  },
 
-      smoothInterpolate(a, b, t) {
-        return vk.scalar.smoothInterpolate(a.charCodeAt(0), b.charCodeAt(0), t)
-      },
+  smoothInterpolate(a, b, t) {
+    return vk.scalar.smoothInterpolate(a.charCodeAt(0), b.charCodeAt(0), t)
+  },
 
-      keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
-        var result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
-        return String.fromCharCode(Math.round(result))
-      }
-    }
+  keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
+    var result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
+    return String.fromCharCode(Math.round(result))
+  }
+}
 
-    // Use the newly defined 'alpha' library.
-    let keyframes = [{
-      stop: 0,
-      value: 'a'
-    }, {
-      stop: 0.5,
-      value: 'z'
-    }, {
-      stop: 1,
-      value: 'a'
-    }]
+// Use the newly defined 'alpha' library.
+let keyframes = [{
+  stop: 0,
+  value: 'a'
+}, {
+  stop: 0.5,
+  value: 'z'
+}, {
+  stop: 1,
+  value: 'a'
+}]
 
-    console.log('linear   (t=0):',
-      alpha.keyframeInterpolate(keyframes, 0, 'linear'))
+console.log('linear   (t=0):',
+  alpha.keyframeInterpolate(keyframes, 0, 'linear'))
 
-    console.log('linear (t=0.5):',
-      alpha.keyframeInterpolate(keyframes, 0.5, 'linear'))
+console.log('linear (t=0.5):',
+  alpha.keyframeInterpolate(keyframes, 0.5, 'linear'))
 
-    console.log('linear   (t=1):',
-      alpha.keyframeInterpolate(keyframes, 1, 'linear'))
+console.log('linear   (t=1):',
+  alpha.keyframeInterpolate(keyframes, 1, 'linear'))
 
-    console.log('linear (t=0.1):',
-      alpha.keyframeInterpolate(keyframes, 0.1, 'linear'))
+console.log('linear (t=0.1):',
+  alpha.keyframeInterpolate(keyframes, 0.1, 'linear'))
 
-    console.log('smooth (t=0.1):',
-      alpha.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+console.log('smooth (t=0.1):',
+  alpha.keyframeInterpolate(keyframes, 0.1, 'smooth'))
+```
 
 Output:
 
