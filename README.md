@@ -59,7 +59,7 @@ Output:
 ### vector2d
 `vector2d` iterpolates between 2d vectors.
 
-  var keyframes = [{
+    var keyframes = [{
       stop: 0,
       value: [0, 100]
     }, {
