@@ -9,6 +9,7 @@ or
 
     yarn add vector-keyframes
 
+![keyframe demo](https://raw.githubusercontent.com/jabney/vector-keyframes/master/meta/demo.gif)
 
 ## Examples
 See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
