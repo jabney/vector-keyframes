@@ -17,10 +17,10 @@ describe('scalar', function () {
       let result
 
       result = scalar.linearInterpolate(start, end, 0)
-      assert.deepEqual(result, start, 't=0 results in start vector')
+      assert.deepEqual(result, start, 't=0 results in start value')
 
       result = scalar.linearInterpolate(start, end, 1)
-      assert.deepEqual(result, end, 't=1 results in end vector')
+      assert.deepEqual(result, end, 't=1 results in end value')
 
       result = scalar.linearInterpolate(start, end, 0.5)
       assert.deepEqual(result, 1.5,
@@ -29,16 +29,16 @@ describe('scalar', function () {
   })
 
   describe('smoothInterpolate', function () {
-    it('interpolates between two 2d vectors', function () {
+    it('interpolates between two scalars', function () {
       const start = 1
       const end = 2
       let result
 
       result = scalar.linearInterpolate(start, end, 0)
-      assert.deepEqual(result, start, 't=0 results in start vector')
+      assert.deepEqual(result, start, 't=0 results in start value')
 
       result = scalar.linearInterpolate(start, end, 1)
-      assert.deepEqual(result, end, 't=1 results in end vector')
+      assert.deepEqual(result, end, 't=1 results in end value')
 
       result = scalar.linearInterpolate(start, end, 0.5)
       assert.deepEqual(result, 1.5,
@@ -62,17 +62,17 @@ describe('scalar', function () {
 
   describe('keyframeInterpolate', function () {
 
-    it('returns the zero vector for empty keyframes', function () {
-      let vector
+    it('returns the zero scalar for empty keyframes', function () {
+      let value
 
-      vector = scalar.keyframeInterpolate([], 0)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate([], 0)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate([], 0.5)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate([], 0.5)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate([], 1)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate([], 1)
+      assert.deepEqual(value, 0)
     })
 
     it('returns the first keyframe when only one is present', function () {
@@ -80,16 +80,16 @@ describe('scalar', function () {
         stop: 0,
         value: 255
       }]
-      let vector
+      let value
 
-      vector = scalar.keyframeInterpolate(keyframes, 0)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(value, 255)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.5)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(value, 255)
 
-      vector = scalar.keyframeInterpolate(keyframes, 1)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(value, 255)
     })
 
     it('interpolates between two keyframes', function () {
@@ -100,16 +100,16 @@ describe('scalar', function () {
         stop: 1,
         value: 255
       }]
-      let vector
+      let value
 
-      vector = scalar.keyframeInterpolate(keyframes, 0)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.5)
-      assert.deepEqual(vector, 127.5)
+      value = scalar.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(value, 127.5)
 
-      vector = scalar.keyframeInterpolate(keyframes, 1)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(value, 255)
     })
 
     it('interpolates between three keyframes', function () {
@@ -123,16 +123,16 @@ describe('scalar', function () {
         stop: 1,
         value: 255
       }]
-      let vector
+      let value
 
-      vector = scalar.keyframeInterpolate(keyframes, 0)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.5)
-      assert.deepEqual(vector, 96)
+      value = scalar.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(value, 96)
 
-      vector = scalar.keyframeInterpolate(keyframes, 1)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(value, 255)
     })
 
     it('clamps first and last keyframes', function () {
@@ -146,22 +146,22 @@ describe('scalar', function () {
         stop: 0.75,
         value: 255
       }]
-      let vector
+      let value
 
-      vector = scalar.keyframeInterpolate(keyframes, 0)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.25)
-      assert.deepEqual(vector, 0)
+      value = scalar.keyframeInterpolate(keyframes, 0.25)
+      assert.deepEqual(value, 0)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.5)
-      assert.deepEqual(vector, 127)
+      value = scalar.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(value, 127)
 
-      vector = scalar.keyframeInterpolate(keyframes, 0.75)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 0.75)
+      assert.deepEqual(value, 255)
 
-      vector = scalar.keyframeInterpolate(keyframes, 1)
-      assert.deepEqual(vector, 255)
+      value = scalar.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(value, 255)
     })
 
     it('interpolates smooth or linear', function () {
