@@ -67,8 +67,7 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
   })
 
   const pair = search.binary(pairs, t, pair => {
-    const a = pair[0]
-    const b = pair[1]
+    const [a, b] = pair
 
     if (t < a.stop) { return -1 }
     else if (t > b.stop) { return 1 }
@@ -76,8 +75,7 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
   })
 
   if (pair != null) {
-    const a = pair[0]
-    const b = pair[1]
+    const [a, b] = pair
     const t_segment = (t - a.stop) / (b.stop - a.stop)
     const interpolate = timingToInterpFn(timing, lib)
     return interpolate(a.vector, b.vector, t_segment)
