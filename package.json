@@ -20,6 +20,8 @@
   },
   "scripts": {
     "build": "babel src -d .",
-    "test": "npm run build && mocha"
+    "test": "npm run build && mocha",
+    "postinstall": "npm run build",
+    "prepublish": "npm run build"
   }
 }
