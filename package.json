@@ -13,10 +13,12 @@
   "author": "James Abney <james.abney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0",
     "lodash": "^4.17.4",
     "mocha": "^3.3.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0"
   },
   "scripts": {
     "build": "babel src -d .",
