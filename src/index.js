@@ -140,6 +140,25 @@ const search = {
   }
 }
 
+const scalar = {
+
+  zero() {
+    return 0
+  },
+
+  linearInterpolate(a, b, t) {
+    return util.linearInterpolate(a, b, t)
+  },
+
+  smoothInterpolate(a, b, t) {
+    return util.smoothInterpolate(a, b, t)
+  },
+
+  keyframeInterpolate(keyframes, t, timing='smooth') {
+    return keyframeInterpolate(keyframes, t, timing, scalar)
+  }
+}
+
 const vector2d = {
 
   zero() {
