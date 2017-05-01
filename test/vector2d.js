@@ -61,4 +61,145 @@ describe('vector2d', function () {
       assert(smooth[1] > linear[1], 'finishes faster than linear')
     })
   })
+
+  describe('keyframeInterpolate', function () {
+
+    it('returns the zero vector for empty keyframes', function () {
+      var vector
+
+      vector = vector2d.keyframeInterpolate([], 0)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate([], 0.5)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate([], 1)
+      assert.deepEqual(vector, [0,0])
+    })
+
+    it('returns the first keyframe when only one is present', function () {
+      var keyframes = [{
+        stop: 0,
+        vector: [255,255]
+      }]
+      var vector
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(vector, [255,255])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(vector, [255,255])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(vector, [255,255])
+    })
+
+    it('interpolates between two keyframes', function () {
+      var keyframes = [{
+        stop: 0,
+        vector: [0,0]
+      }, {
+        stop: 1,
+        vector: [255,255]
+      }]
+      var vector
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(vector, [127.5,127.5])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(vector, [255,255])
+    })
+
+    it('interpolates between three keyframes', function () {
+      var keyframes = [{
+        stop: 0,
+        vector: [0,0]
+      }, {
+        stop: 0.5,
+        vector: [48,96]
+      }, {
+        stop: 1,
+        vector: [255,255]
+      }]
+      var vector
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(vector, [48,96])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(vector, [255,255])
+    })
+
+    it('clamps first and last keyframes', function () {
+      var keyframes = [{
+        stop: 0.25,
+        vector: [0,0]
+      }, {
+        stop: 0.5,
+        vector: [127,127]
+      }, {
+        stop: 0.75,
+        vector: [255,255]
+      }]
+      var vector
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.25)
+      assert.deepEqual(vector, [0,0])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.5)
+      assert.deepEqual(vector, [127,127])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 0.75)
+      assert.deepEqual(vector, [255,255])
+
+      vector = vector2d.keyframeInterpolate(keyframes, 1)
+      assert.deepEqual(vector, [255,255])
+    })
+
+    it('interpolates smooth or linear', function () {
+      var keyframes = [{
+        stop: 0,
+        vector: [0,0]
+      }, {
+        stop: 1,
+        vector: [255,255]
+      }]
+      var smooth, linear
+
+      smooth = vector2d.keyframeInterpolate(keyframes, 0, 'smooth')
+      linear = vector2d.keyframeInterpolate(keyframes, 0, 'linear')
+      assert.deepEqual(smooth, [0,0])
+      assert.deepEqual(linear, [0,0])
+
+      smooth = vector2d.keyframeInterpolate(keyframes, 0.1, 'smooth')
+      linear = vector2d.keyframeInterpolate(keyframes, 0.1, 'linear')
+      assert(smooth[0] < linear[0])
+      assert(smooth[1] < linear[1])
+
+      smooth = vector2d.keyframeInterpolate(keyframes, 0.5, 'smooth')
+      linear = vector2d.keyframeInterpolate(keyframes, 0.5, 'linear')
+      assert.deepEqual(smooth, [127.5,127.5])
+      assert.deepEqual(linear, [127.5,127.5])
+
+      smooth = vector2d.keyframeInterpolate(keyframes, 0.9, 'smooth')
+      linear = vector2d.keyframeInterpolate(keyframes, 0.9, 'linear')
+      assert(smooth[0] > linear[0])
+      assert(smooth[1] > linear[1])
+
+      smooth = vector2d.keyframeInterpolate(keyframes, 1, 'smooth')
+      linear = vector2d.keyframeInterpolate(keyframes, 1, 'linear')
+      assert.deepEqual(smooth, [255,255])
+      assert.deepEqual(linear, [255,255])
+    })
+  })
 })
