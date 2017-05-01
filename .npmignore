@@ -1,1 +1,4 @@
 .eslintrc.js
+
+# Source files
+src/
