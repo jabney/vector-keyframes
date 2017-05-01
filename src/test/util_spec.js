@@ -3,6 +3,14 @@ const util = require('../index').util
 
 describe('utilities', function () {
 
+  describe('smooth', function () {
+    it('starts slow and finishes fast', function () {
+      assert(util.smooth(0.1) < 0.1)
+      assert(util.smooth(0.5) === 0.5)
+      assert(util.smooth(0.9) > 0.9)
+    })
+  })
+
   describe('vector3dToHex', function () {
     it('converts 3d byte vector to 6-digit hex color', function () {
       let vector, hex
