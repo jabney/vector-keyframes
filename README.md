@@ -135,7 +135,11 @@ Output:
     hex color (t=0.9): #0033cc
 
 ### custom
+Custom interpolation can be achieved by providing a base library and defining
+certain methods within:
 
+    // Create a base 'alpha' library which defines its own interpolation
+    // methods, making use of the ones in the 'scalar' lib.
     var alpha = {
 
       zero() {
@@ -156,6 +160,7 @@ Output:
       }
     }
 
+    // Use the newly defined 'alpha' library.
     let keyframes = [{
       stop: 0,
       value: 'a'
