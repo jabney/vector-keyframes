@@ -1,11 +1,11 @@
-const vk = require('./index')
-const scalar = vk.scalar
-const vector2d = vk.vector2d
-const vector3d = vk.vector3d
-const util = vk.util
+var vk = require('./index')
+var scalar = vk.scalar
+var vector2d = vk.vector2d
+var vector3d = vk.vector3d
+var util = vk.util
 
 function exScalar() {
-  const keyframes = [{
+  var keyframes = [{
     stop: 0,
     value: 0
   }, {
@@ -33,7 +33,7 @@ function exScalar() {
 }
 
 function exVector2d() {
-  const keyframes = [{
+  var keyframes = [{
     stop: 0,
     value: [0, 100]
   }, {
@@ -61,7 +61,7 @@ function exVector2d() {
 }
 
 function exVector3d() {
-  const keyframes = [{
+  var keyframes = [{
     stop: 0,
     value: [0, 0, 255]
   }, {
@@ -72,7 +72,7 @@ function exVector3d() {
     value: [0, 0, 255]
   }]
 
-  let result = vector3d.keyframeInterpolate(keyframes, 0.25)
+  var result = vector3d.keyframeInterpolate(keyframes, 0.25)
   console.log('\nvector    (t=0.25):', result)
   console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
   console.log('hex color (t=0.25):', util.vector3dToHex(result))
@@ -89,7 +89,7 @@ function exVector3d() {
 }
 
 function exCustom() {
-  const alpha = {
+  var alpha = {
 
     zero() {
       return '*'
@@ -104,12 +104,12 @@ function exCustom() {
     },
 
     keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
-      const result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
+      var result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
       return String.fromCharCode(Math.round(result))
     }
   }
 
-  let keyframes = [{
+  var keyframes = [{
     stop: 0,
     value: 'a'
   }, {
