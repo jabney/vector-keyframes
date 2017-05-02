@@ -40,12 +40,12 @@ function timingToInterpFn(timing, lib) {
   return map[timing] || map.linear
 }
 
-function keyframeInterpolate(keyframes, t, timing, lib) {
+function keyframeInterpolate(keyframes, time, timing, lib) {
   const first = 0
   const last = keyframes.length - 1
 
   // Clamp time to [0, 1]
-  t = Math.max(Math.min(t, 1), 0)
+  time = Math.max(Math.min(time, 1), 0)
 
   if (!Array.isArray(keyframes) || !keyframes.length) {
     return lib.zero()
@@ -55,11 +55,11 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
     return keyframes[first].value
   }
 
-  if (t < keyframes[first].stop) {
+  if (time < keyframes[first].stop) {
     return keyframes[first].value
   }
 
-  if (t > keyframes[last].stop) {
+  if (time > keyframes[last].stop) {
     return keyframes[last].value
   }
 
@@ -69,17 +69,17 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
     return b
   })
 
-  const pair = search.binary(pairs, t, pair => {
+  const pair = search.binary(pairs, time, pair => {
     const [a, b] = pair
 
-    if (t < a.stop) { return -1 }
-    else if (t > b.stop) { return 1 }
+    if (time < a.stop) { return -1 }
+    else if (time > b.stop) { return 1 }
     return 0
   })
 
   if (pair != null) {
     const [a, b] = pair
-    const t_segment = (t - a.stop) / (b.stop - a.stop)
+    const t_segment = (time - a.stop) / (b.stop - a.stop)
     const interpolate = timingToInterpFn(timing, lib)
     return interpolate(a.value, b.value, t_segment)
   }
@@ -149,8 +149,8 @@ const scalar = {
     return a + util.smooth(t)*(b-a)
   },
 
-  keyframeInterpolate(keyframes, t, timing='linear', lib=scalar) {
-    return keyframeInterpolate(keyframes, t, timing, lib)
+  keyframeInterpolate(keyframes, time, timing='linear', lib=scalar) {
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
@@ -176,8 +176,8 @@ const vector2d = {
     ]
   },
 
-  keyframeInterpolate(keyframes, t, timing='linear', lib=vector2d) {
-    return keyframeInterpolate(keyframes, t, timing, lib)
+  keyframeInterpolate(keyframes, time, timing='linear', lib=vector2d) {
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
@@ -205,8 +205,8 @@ const vector3d = {
     ]
   },
 
-  keyframeInterpolate(keyframes, t, timing='linear', lib=vector3d) {
-    return keyframeInterpolate(keyframes, t, timing, lib)
+  keyframeInterpolate(keyframes, time, timing='linear', lib=vector3d) {
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
