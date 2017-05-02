@@ -1,11 +1,11 @@
-var vk = require('./index')
-var scalar = vk.scalar
-var vector2d = vk.vector2d
-var vector3d = vk.vector3d
-var util = vk.util
+const vk = require('./index')
+const scalar = vk.scalar
+const vector2d = vk.vector2d
+const vector3d = vk.vector3d
+const util = vk.util
 
 function exScalar() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: 0
   }, {
@@ -33,7 +33,7 @@ function exScalar() {
 }
 
 function exVector2d() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: [0, 100]
   }, {
@@ -61,7 +61,7 @@ function exVector2d() {
 }
 
 function exVector3d() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: [0, 0, 255]
   }, {
@@ -72,24 +72,24 @@ function exVector3d() {
     value: [0, 0, 255]
   }]
 
-  var result = vector3d.keyframeInterpolate(keyframes, 0.25)
-  console.log('vector    (t=0.25):', result)
+  let result = vector3d.keyframeInterpolate(keyframes, 0.25)
+  console.log('\nvector    (t=0.25):', result)
   console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
   console.log('hex color (t=0.25):', util.vector3dToHex(result))
 
   result = vector3d.keyframeInterpolate(keyframes, 0.5)
-  console.log('vector    (t=0.5):', result)
+  console.log('\vvector    (t=0.5):', result)
   console.log('rgb color (t=0.5):', util.vector3dToRgb(result))
   console.log('hex color (t=0.5):', util.vector3dToHex(result))
 
   result = vector3d.keyframeInterpolate(keyframes, 0.9)
-  console.log('vector    (t=0.9):', result)
+  console.log('\nvector    (t=0.9):', result)
   console.log('rgb color (t=0.9):', util.vector3dToRgb(result))
   console.log('hex color (t=0.9):', util.vector3dToHex(result))
 }
 
 function exCustom() {
-  var alpha = {
+  const alpha = {
 
     zero() {
       return '*'
@@ -104,7 +104,7 @@ function exCustom() {
     },
 
     keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
-      var result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
+      const result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
       return String.fromCharCode(Math.round(result))
     }
   }
