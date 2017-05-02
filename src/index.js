@@ -44,6 +44,9 @@ function keyframeInterpolate(keyframes, t, timing, lib) {
   const first = 0
   const last = keyframes.length - 1
 
+  // Clamp time to [0, 1]
+  t = Math.max(Math.min(t, 1), 0)
+
   if (!Array.isArray(keyframes) || !keyframes.length) {
     return lib.zero()
   }
