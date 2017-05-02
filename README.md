@@ -19,10 +19,12 @@ or
 See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
 
 ```javascript
+// Import the module and create some library aliases.
 let vk = require('vector-keyframes')
 let vector3d = vk.vector3d
 let util = vk.util
 
+// Define some keyframes ordered by stop, low to high.
 let keyframes = [{
   stop: 0,
   value: [0, 0, 255]
@@ -34,6 +36,8 @@ let keyframes = [{
   value: [0, 0, 255]
 }]
 
+// Pass the keyframes and the time parameter to interpolate.
+// The range for the time parameter is 0 to 1.
 let result = vector3d.keyframeInterpolate(keyframes, 0.25)
 console.log('vector    (t=0.25):', result)
 console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
