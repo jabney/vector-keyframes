@@ -20,12 +20,12 @@ See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example
 
 ```javascript
 // Import the module and create some library aliases.
-let vk = require('vector-keyframes')
-let vector3d = vk.vector3d
-let util = vk.util
+const vk = require('vector-keyframes')
+const vector3d = vk.vector3d
+const util = vk.util
 
 // Define some keyframes ordered by stop, low to high.
-let keyframes = [{
+const keyframes = [{
   stop: 0,
   value: [0, 0, 255]
 }, {
@@ -38,7 +38,7 @@ let keyframes = [{
 
 // Pass the keyframes and the time parameter to interpolate.
 // The range for the time parameter is 0 to 1.
-let result = vector3d.keyframeInterpolate(keyframes, 0.25)
+const result = vector3d.keyframeInterpolate(keyframes, 0.25)
 console.log('vector    (t=0.25):', result)
 console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
 console.log('hex color (t=0.25):', util.vector3dToHex(result))
@@ -48,10 +48,10 @@ console.log('hex color (t=0.25):', util.vector3dToHex(result))
 `scalar` provides a set of interpolation methods that `vector2d` and `vector3d` are built on.
 
 ```javascript
-let vk = require('vector-keyframes')
-let scalar = vk.scalar
+const vk = require('vector-keyframes')
+const scalar = vk.scalar
 
-let keyframes = [{
+const keyframes = [{
   stop: 0,
   value: 0
 }, {
@@ -92,10 +92,10 @@ smooth (t=0.1): 0.10400000000000002
 `vector2d` iterpolates between 2d vectors.
 
 ```javascript
-let vk = require('vector-keyframes')
-let vector2d = vk.vector2d
+const vk = require('vector-keyframes')
+const vector2d = vk.vector2d
 
-let keyframes = [{
+const keyframes = [{
   stop: 0,
   value: [0, 100]
 }, {
@@ -136,11 +136,11 @@ smooth (t=0.1): [ 10.400000000000002, 100 ]
 `vector3d` interpolates between 3d vectors. The `util` library provides some conversion helpers.
 
 ```javascript
-let vk = require('vector-keyframes')
-let vector3d = vk.vector3d
-let util = vk.util
+const vk = require('vector-keyframes')
+const vector3d = vk.vector3d
+const util = vk.util
 
-let keyframes = [{
+const keyframes = [{
   stop: 0,
   value: [0, 0, 255]
 }, {
@@ -152,17 +152,17 @@ let keyframes = [{
 }]
 
 let result = vector3d.keyframeInterpolate(keyframes, 0.25)
-console.log('vector    (t=0.25):', result)
+console.log('\nvector    (t=0.25):', result)
 console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
 console.log('hex color (t=0.25):', util.vector3dToHex(result))
 
 result = vector3d.keyframeInterpolate(keyframes, 0.5)
-console.log('vector    (t=0.5):', result)
+console.log('\nvector    (t=0.5):', result)
 console.log('rgb color (t=0.5):', util.vector3dToRgb(result))
 console.log('hex color (t=0.5):', util.vector3dToHex(result))
 
 result = vector3d.keyframeInterpolate(keyframes, 0.9)
-console.log('vector    (t=0.9):', result)
+console.log('\nvector    (t=0.9):', result)
 console.log('rgb color (t=0.9):', util.vector3dToRgb(result))
 console.log('hex color (t=0.9):', util.vector3dToHex(result))
 ```
@@ -188,12 +188,12 @@ Custom interpolation can be achieved by providing a base library and defining
 certain methods within:
 
 ```javascript
-let vk = require('vector-keyframes')
-let scalar = vk.scalar
+const vk = require('vector-keyframes')
+const scalar = vk.scalar
 
 // Create a base 'alpha' library which defines its own interpolation
 // methods, making use of the ones in the 'scalar' lib.
-let alpha = {
+const alpha = {
 
   zero() {
     return '*'
@@ -208,13 +208,13 @@ let alpha = {
   },
 
   keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
-    let result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
+    const result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
     return String.fromCharCode(Math.round(result))
   }
 }
 
 // Use the newly defined 'alpha' library.
-let keyframes = [{
+const keyframes = [{
   stop: 0,
   value: 'a'
 }, {
