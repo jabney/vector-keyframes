@@ -1,5 +1,10 @@
 # Change log for Vector Keyframes
 
+## [v0.1.4] - 01-05-2017
+### Changed
+- Minor refactoring
+- Update readme and example.js
+
 ## [v0.1.3] - 01-05-2017
 ### Changed
 - Prebuild project
