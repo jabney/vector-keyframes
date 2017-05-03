@@ -148,14 +148,14 @@ describe('tweenSearch', function () {
   describe('random', function () {
     it('returns the correct range in a long list of keyframes', function () {
       let keyframes = []
-      let size = 10000
+      let size = 1000
 
       for (let i = 0; i < size; i++) {
         keyframes.push({stop: Math.random()})
       }
       keyframes.sort((a, b) => a.stop - b.stop)
 
-      for (let i = 0; i < size; i++) {
+      for (let i = 0; i < 2*size; i++) {
         let time = Math.random()
         let result = search.tween(keyframes, time)
 
