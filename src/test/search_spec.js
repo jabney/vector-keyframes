@@ -61,3 +61,84 @@ describe('binary search', function () {
   })
 })
 
+describe('tweenSearch', function () {
+
+  describe('deterministic', function () {
+
+    it('returns null for an empty list', function () {
+      let result = search.tween([], 0)
+      assert.equal(result, null)
+    })
+
+    it('returns the only element for a single-element list', function () {
+      let keyframe = {stop: 0.25}
+
+      let result = search.tween([keyframe], 0)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframe)
+
+      result = search.tween([keyframe], 0.5)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframe)
+
+      result = search.tween([keyframe], 1)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframe)
+    })
+
+    it('returns the low element when time < low.stop', function () {
+      let keyframes = [
+        {stop: 0.1},
+        {stop: 0.5},
+        {stop: 0.9}
+      ]
+
+      let result = search.tween(keyframes, 0.05)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframes[0])
+
+      result = search.tween(keyframes, 0.1)
+      assert.equal(result.length, 2)
+      assert.equal(result[0], keyframes[0])
+    })
+
+    it('returns the high element when time >= high.stop', function () {
+      let keyframes = [
+        {stop: 0.1},
+        {stop: 0.5},
+        {stop: 0.9}
+      ]
+
+      let result = search.tween(keyframes, 0.9)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframes[2])
+
+      result = search.tween(keyframes, 0.95)
+      assert.equal(result.length, 1)
+      assert.equal(result[0], keyframes[2])
+    })
+
+    it('returns the correct range in a long list of keyframes', function () {
+      let keyframes = []
+      for (let i = 0; i <= 100; i++) {
+        keyframes.push({stop: i/100})
+      }
+
+      for (let i = 0; i <= 200; i++) {
+        let time = i/200
+        let result = search.tween(keyframes, time)
+        if (result.length == 1) {
+          if (time < 0.5) {
+            assert(time <= result[0].stop)
+          } else {
+            assert(time >= result[0].stop)
+          }
+        } else if (result.length == 2) {
+          assert(result[0].stop <= time && time < result[1].stop )
+        } else {
+          assert(false, 'list lengths should be 1 or 2')
+        }
+      }
+    })
+  })
+})
