@@ -11,7 +11,7 @@ function defaultComparator(candidate, target) {
   }
 }
 
-function keyframeSearch(sortedList, time, low, high) {
+function tweenSearch(sortedList, time, low, high) {
   let mid = Math.floor((low + high) / 2)
 
   if (high < 0) return sortedList[0]
@@ -23,9 +23,9 @@ function keyframeSearch(sortedList, time, low, high) {
     return [a, b]
   } else {
     if (time < a.stop) {
-      return keyframeSearch(sortedList, time, low, mid-1)
+      return tweenSearch(sortedList, time, low, mid-1)
     } else {
-      return keyframeSearch(sortedList, time, mid+1, high)
+      return tweenSearch(sortedList, time, mid+1, high)
     }
   }
 }
@@ -108,6 +108,18 @@ function keyframeInterpolate(keyframes, time, timing, lib) {
 // -------------------------------------------------
 
 
+const search = {
+
+  binary(sortedList, target, comparator=defaultComparator) {
+    return binarySearch(sortedList, target, 0, sortedList.length-1, comparator)
+  },
+
+  tween(sortedList, time) {
+    return tweenSearch(sortedList, time, 0, sortedList.length - 1)
+  }
+}
+
+
 const util = {
 
   smooth(t) {
@@ -144,17 +156,6 @@ const util = {
     return list.slice(1,4).map(function (s) {
       return +s
     })
-  }
-}
-
-const search = {
-
-  binary(sortedList, target, comparator=defaultComparator) {
-    return binarySearch(sortedList, target, 0, sortedList.length-1, comparator)
-  },
-
-  keyframeSearch(sortedList, time) {
-    return keyframeSearch(sortedList, time, 0, sortedList.length - 1)
   }
 }
 
