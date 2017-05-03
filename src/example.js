@@ -1,11 +1,11 @@
-var vk = require('./index')
-var scalar = vk.scalar
-var vector2d = vk.vector2d
-var vector3d = vk.vector3d
-var util = vk.util
+const vk = require('./index')
+const scalar = vk.scalar
+const vector2d = vk.vector2d
+const vector3d = vk.vector3d
+const util = vk.util
 
 function exScalar() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: 0
   }, {
@@ -33,7 +33,7 @@ function exScalar() {
 }
 
 function exVector2d() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: [0, 100]
   }, {
@@ -61,7 +61,7 @@ function exVector2d() {
 }
 
 function exVector3d() {
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: [0, 0, 255]
   }, {
@@ -72,7 +72,7 @@ function exVector3d() {
     value: [0, 0, 255]
   }]
 
-  var result = vector3d.keyframeInterpolate(keyframes, 0.25)
+  let result = vector3d.keyframeInterpolate(keyframes, 0.25)
   console.log('\nvector    (t=0.25):', result)
   console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
   console.log('hex color (t=0.25):', util.vector3dToHex(result))
@@ -89,7 +89,7 @@ function exVector3d() {
 }
 
 function exCustom() {
-  var alpha = {
+  const alpha = {
 
     zero() {
       return '*'
@@ -104,12 +104,12 @@ function exCustom() {
     },
 
     keyframeInterpolate(keyframes, t, timing='linear', lib=alpha) {
-      var result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
+      const result = vk.scalar.keyframeInterpolate(keyframes, t, timing, lib)
       return String.fromCharCode(Math.round(result))
     }
   }
 
-  var keyframes = [{
+  const keyframes = [{
     stop: 0,
     value: 'a'
   }, {
@@ -154,9 +154,9 @@ exCustom()
 
 console.log()
 
-// var tweenSearch = require('./index').search.tweenSearch
+// const tweenSearch = require('./index').search.tweenSearch
 
-// var list = [
+// const list = [
 //   {stop: 1},
 //   {stop: 2},
 //   {stop: 3},
@@ -178,5 +178,5 @@ console.log()
 // console.log('low, high:', list[0], list[list.length-1])
 // let time = 4 // Math.random()
 // console.log('time:', time)
-// var result = tweenSearch(list, time)
+// const result = tweenSearch(list, time)
 // console.log(result)
