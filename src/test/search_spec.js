@@ -1,6 +1,8 @@
 const assert = require('assert')
-const search = require('../index').search
 const _ = require('lodash')
+const vk = require('../index')
+const search = vk.search
+const util = vk.util
 
 describe('binary search', function () {
   it('returns null for an empty list', function () {
@@ -153,7 +155,7 @@ describe('tweenSearch', function () {
       for (let i = 0; i < size; i++) {
         keyframes.push({stop: Math.random()})
       }
-      keyframes.sort((a, b) => a.stop - b.stop)
+      util.keyframeSort(keyframes)
 
       for (let i = 0; i < 2*size; i++) {
         let time = Math.random()
