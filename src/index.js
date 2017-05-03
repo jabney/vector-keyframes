@@ -15,7 +15,7 @@ function tweenSearch(sortedList, time, low, high) {
   let mid = Math.floor((low + high) / 2)
   let len = sortedList.length
 
-  if (!len) return null
+  if (len == 0) return null
   if (mid < 0) return [sortedList[0]]
   if (mid == len-1) return [sortedList[len-1]]
 
