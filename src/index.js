@@ -13,9 +13,11 @@ function defaultComparator(candidate, target) {
 
 function tweenSearch(sortedList, time, low, high) {
   let mid = Math.floor((low + high) / 2)
+  let len = sortedList.length
 
-  if (high < 0) return sortedList[0]
-  if (mid == sortedList.length-1) return sortedList[sortedList.length-1]
+  if (!len) return null
+  if (high < 0) return [sortedList[0]]
+  if (mid == len-1) return [sortedList[len-1]]
 
   let [a, b] = sortedList.slice(mid, mid+2)
 
