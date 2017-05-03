@@ -16,7 +16,7 @@ or
 *[demo app](https://jabney.github.io/vector-keyframes-demo/dist/index.html)*
 
 ## Examples
-See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/example.js)
+See [examples.js](https://github.com/jabney/vector-keyframes/blob/master/src/example.js)
 
 ```javascript
 // Import the module and create some library aliases.
