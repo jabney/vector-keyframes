@@ -1,15 +1,6 @@
 
-// -------------------------------------------------
-// Binary search
-function defaultComparator(candidate, target) {
-  if (target < candidate) {
-    return -1
-  } else if (target > candidate) {
-    return 1
-  } else {
-    return 0
-  }
-}
+// -----------------------------------
+// Tween search
 
 function tweenSearch(sortedList, time, low, high) {
   let mid = Math.floor((low + high) / 2)
@@ -32,6 +23,20 @@ function tweenSearch(sortedList, time, low, high) {
   }
 }
 
+
+// -----------------------------------
+// Binary search
+
+function defaultComparator(candidate, target) {
+  if (target < candidate) {
+    return -1
+  } else if (target > candidate) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
 function binarySearch(sortedList, target, low, high, comparator) {
   if (high < low) {
     return null
@@ -48,11 +53,11 @@ function binarySearch(sortedList, target, low, high, comparator) {
     return binarySearch(sortedList, target, mid+1, high, comparator)
   }
 }
-// -------------------------------------------------
 
 
-// -------------------------------------------------
+// -----------------------------------
 // Keyframe interpolation
+
 function timingToInterpFn(timing, lib) {
   let map = {
     'linear': lib.linearInterpolate,
@@ -107,8 +112,10 @@ function keyframeInterpolate(keyframes, time, timing, lib) {
 
   return lib.zero()
 }
-// -------------------------------------------------
 
+// -------------------------------------------------
+// search library
+// -------------------------------------------------
 
 const search = {
 
@@ -121,6 +128,10 @@ const search = {
   }
 }
 
+
+// -------------------------------------------------
+// util library
+// -------------------------------------------------
 
 const util = {
 
@@ -161,6 +172,10 @@ const util = {
   }
 }
 
+// -------------------------------------------------
+// scalar library
+// -------------------------------------------------
+
 const scalar = {
 
   zero() {
@@ -179,6 +194,10 @@ const scalar = {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
+
+// -------------------------------------------------
+// vector2d library
+// -------------------------------------------------
 
 const vector2d = {
 
@@ -206,6 +225,10 @@ const vector2d = {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
+
+// -------------------------------------------------
+// vector3d library
+// -------------------------------------------------
 
 const vector3d = {
 
@@ -235,6 +258,7 @@ const vector3d = {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
+
 
 exports.util = util
 exports.search = search
