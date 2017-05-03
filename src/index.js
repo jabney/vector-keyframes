@@ -135,10 +135,19 @@ const search = {
 
 const util = {
 
+  /**
+   * Smooth a parameter in the range 0 <= t <= 1 in a manner
+   * that approximates cosine.
+   * @param {float} t interpolation parameter in the range [0, 1]
+   */
   smooth(t) {
     return 3 * Math.pow(t, 2) - 2 * Math.pow(t, 3)
   },
 
+  /**
+   * Convert a three-element array
+   * @param {number[]} vector a three-element array
+   */
   vector3dToHex(vector) {
     const hexColor = '#' + vector.map((c) => {
       const byte = Math.round(c)
