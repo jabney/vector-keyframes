@@ -66,7 +66,7 @@ function timingToInterpFn(timing, lib) {
   return map[timing] || map.linear
 }
 
-function keyframeInterpolate(keyframes, time, timing, lib) {
+function keyframeInterpolateBinary(keyframes, time, timing, lib) {
   const first = 0
   const last = keyframes.length - 1
 
@@ -191,7 +191,7 @@ const scalar = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=scalar) {
-    return keyframeInterpolate(keyframes, time, timing, lib)
+    return keyframeInterpolateBinary(keyframes, time, timing, lib)
   }
 }
 
@@ -222,7 +222,7 @@ const vector2d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector2d) {
-    return keyframeInterpolate(keyframes, time, timing, lib)
+    return keyframeInterpolateBinary(keyframes, time, timing, lib)
   }
 }
 
@@ -255,7 +255,7 @@ const vector3d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector3d) {
-    return keyframeInterpolate(keyframes, time, timing, lib)
+    return keyframeInterpolateBinary(keyframes, time, timing, lib)
   }
 }
 
