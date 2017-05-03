@@ -169,6 +169,10 @@ const util = {
     return list.slice(1,4).map(function (s) {
       return +s
     })
+  },
+
+  keyframeSort(keyframes) {
+    return keyframes.sort((a, b) => a.stop - b.stop)
   }
 }
 
