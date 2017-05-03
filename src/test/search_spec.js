@@ -128,6 +128,7 @@ describe('tweenSearch', function () {
       for (let i = 0; i <= 2*size; i++) {
         let time = i/(2*size)
         let result = search.tween(keyframes, time)
+
         if (result.length == 1) {
           if (time < 0.5) {
             assert(time <= result[0].stop, 'time is le low end')
@@ -145,6 +146,32 @@ describe('tweenSearch', function () {
   })
 
   describe('random', function () {
+    it('returns the correct range in a long list of keyframes', function () {
+      let keyframes = []
+      let size = 10000
 
+      for (let i = 0; i < size; i++) {
+        keyframes.push({stop: Math.random()})
+      }
+      keyframes.sort((a, b) => a.stop - b.stop)
+
+      for (let i = 0; i < size; i++) {
+        let time = Math.random()
+        let result = search.tween(keyframes, time)
+
+        if (result.length == 1) {
+          if (time < 0.5) {
+            assert(time <= result[0].stop, 'time is le low end')
+          } else {
+            assert(time >= result[0].stop, 'time is ge high end')
+          }
+        } else if (result.length == 2) {
+          assert(result[0].stop <= time && time < result[1].stop,
+            'time is between keyframe pair')
+        } else {
+          assert(false, 'list lengths should be 1 or 2')
+        }
+      }
+    })
   })
 })
