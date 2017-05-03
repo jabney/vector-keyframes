@@ -56,7 +56,7 @@ describe('scalar', function () {
 
       smooth = scalar.smoothInterpolate(start, end, 0.9)
       linear = scalar.linearInterpolate(start, end, 0.9)
-      assert(smooth > linear, 'starts slower than linear')
+      assert(smooth > linear, 'finishes faster than linear')
     })
   })
 
