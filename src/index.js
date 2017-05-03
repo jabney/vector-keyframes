@@ -13,22 +13,20 @@ function defaultComparator(candidate, target) {
 
 function keyframeSearch(sortedList, time, low, high) {
   let mid = Math.floor((low + high) / 2)
-  console.log(low, mid, high)
-  if (mid < 0) return sortedList[0]
-  if (mid == high) return sortedList[sortedList.length-1]
+
+  if (high < 0) return sortedList[0]
+  if (mid == sortedList.length-1) return sortedList[sortedList.length-1]
 
   let [a, b] = sortedList.slice(mid, mid+2)
 
-  if (a.stop <= time) {
-    if (time <= b.stop) {
-      return [a, b]
+  if (a.stop <= time && time < b.stop) {
+    return [a, b]
+  } else {
+    if (time < a.stop) {
+      return keyframeSearch(sortedList, time, low, mid-1)
     } else {
-      console.log('high')
       return keyframeSearch(sortedList, time, mid+1, high)
     }
-  } else {
-    console.log('low')
-    return keyframeSearch(sortedList, time, low, mid-1)
   }
 }
 
