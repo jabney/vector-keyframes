@@ -16,7 +16,7 @@ function tweenSearch(sortedList, time, low, high) {
   let len = sortedList.length
 
   if (!len) return null
-  if (high < 0) return [sortedList[0]]
+  if (mid < 0) return [sortedList[0]]
   if (mid == len-1) return [sortedList[len-1]]
 
   let [a, b] = sortedList.slice(mid, mid+2)
