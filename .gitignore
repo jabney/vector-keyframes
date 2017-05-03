@@ -38,4 +38,5 @@ jspm_packages
 
 # Build files
 /index.js
+/example.js
 /test/
