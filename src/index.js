@@ -149,7 +149,7 @@ const util = {
    * @param {number[]} vector a three-element array
    */
   vector3dToHex(vector) {
-    const hexColor = '#' + vector.map((c) => {
+    const hexColor = '#' + vector.slice(0,3).map((c) => {
       const byte = Math.round(c)
       const hex = byte.toString(16)
       return hex.length == 1 ? '0' + hex : hex
@@ -167,7 +167,7 @@ const util = {
   },
 
   vector3dToRgb(vector) {
-    vector = vector.map(function (byte) {
+    vector = vector.slice(0,3).map(function (byte) {
       return Math.round(byte)
     })
     return 'rgb(' + vector + ')'
