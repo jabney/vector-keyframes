@@ -154,10 +154,9 @@ exCustom()
 
 console.log()
 
-var keyframeSearch = require('./index').search.keyframeSearch
+// var tweenSearch = require('./index').search.tweenSearch
 
 // var list = [
-//   // {stop: 0},
 //   {stop: 1},
 //   {stop: 2},
 //   {stop: 3},
@@ -168,18 +167,16 @@ var keyframeSearch = require('./index').search.keyframeSearch
 //   {stop: 8},
 //   {stop: 9},
 //   {stop: 10},
-//   // {stop: 11}
 // ]
 
-let list = []
-for (let i = 0; i < 3; i++) {
-  list.push({stop: Math.random()})
-}
-list = list.sort((a, b) => a.stop - b.stop)
+// let list = []
+// for (let i = 0; i < 9; i++) {
+//   list.push({stop: Math.random()})
+// }
+// list = list.sort((a, b) => a.stop - b.stop)
 
-console.log('low, high:', list[0], list[list.length-1])
-let time = Math.random()
-console.log('time:', time)
-var result = keyframeSearch(list, time)
-console.log(result)
-
+// console.log('low, high:', list[0], list[list.length-1])
+// let time = 4 // Math.random()
+// console.log('time:', time)
+// var result = tweenSearch(list, time)
+// console.log(result)
