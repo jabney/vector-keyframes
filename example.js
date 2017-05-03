@@ -172,7 +172,7 @@ var keyframeSearch = require('./index').search.keyframeSearch
 // ]
 
 let list = []
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 3; i++) {
   list.push({stop: Math.random()})
 }
 list = list.sort((a, b) => a.stop - b.stop)
