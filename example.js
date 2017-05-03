@@ -153,3 +153,33 @@ console.log('------')
 exCustom()
 
 console.log()
+
+var keyframeSearch = require('./index').search.keyframeSearch
+
+// var list = [
+//   // {stop: 0},
+//   {stop: 1},
+//   {stop: 2},
+//   {stop: 3},
+//   {stop: 4},
+//   {stop: 5},
+//   {stop: 6},
+//   {stop: 7},
+//   {stop: 8},
+//   {stop: 9},
+//   {stop: 10},
+//   // {stop: 11}
+// ]
+
+let list = []
+for (let i = 0; i < 100; i++) {
+  list.push({stop: Math.random()})
+}
+list = list.sort((a, b) => a.stop - b.stop)
+
+console.log('low, high:', list[0], list[list.length-1])
+let time = Math.random()
+console.log('time:', time)
+var result = keyframeSearch(list, time)
+console.log(result)
+

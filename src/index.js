@@ -11,6 +11,25 @@ function defaultComparator(candidate, target) {
   }
 }
 
+function keyframeSearch(sortedList, time, low, high) {
+  let mid = Math.floor((low + high) / 2)
+
+  if (mid == 0) return sortedList[0]
+  if (mid == sortedList.length-1) return sortedList[mid]
+
+  let [a, b] = sortedList.slice(mid, mid+2)
+
+  if (a.stop <= time) {
+    if (time <= b.stop) {
+      return [a, b]
+    } else {
+      return keyframeSearch(sortedList, time, mid+1, high)
+    }
+  } else {
+    return keyframeSearch(sortedList, time, low, mid-1)
+  }
+}
+
 function binarySearch(sortedList, target, low, high, comparator) {
   if (high < low) {
     return null
@@ -132,6 +151,10 @@ const search = {
 
   binary(sortedList, target, comparator=defaultComparator) {
     return binarySearch(sortedList, target, 0, sortedList.length-1, comparator)
+  },
+
+  keyframeSearch(sortedList, time) {
+    return keyframeSearch(sortedList, time, 0, sortedList.length - 1)
   }
 }
 
