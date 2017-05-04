@@ -2,7 +2,7 @@
 // -----------------------------------
 // Tween search
 
-function tweenSearch(sortedList, time, low, high) {
+function tweenSearch(sortedList, time, low, high, witness) {
   let mid = Math.floor((low + high) / 2)
   let len = sortedList.length
 
@@ -10,7 +10,8 @@ function tweenSearch(sortedList, time, low, high) {
   if (mid < 0) return [sortedList[0]]
   if (mid == len-1) return [sortedList[len-1]]
 
-  let [a, b] = sortedList.slice(mid, mid+2)
+  let a = sortedList[mid]
+  let b = sortedList[mid+1]
 
   if (a.stop <= time && time < b.stop) {
     return [a, b]
