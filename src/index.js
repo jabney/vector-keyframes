@@ -88,15 +88,15 @@ function keyframeInterpolateTween(keyframes, time, timing, lib) {
   }
 
   const result = search.tween(keyframes, time)
+  const interpolate = timingToInterpFn(timing, lib)
 
   if (result.length == 1) {
-    return result[0].value
+    let value = result[0].value
+    return interpolate(value, value, 0)
   }
 
   const [a, b] = result
-
   const t_segment = (time - a.stop) / (b.stop - a.stop)
-  const interpolate = timingToInterpFn(timing, lib)
   return interpolate(a.value, b.value, t_segment)
 }
 
