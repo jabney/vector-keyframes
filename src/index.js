@@ -38,7 +38,6 @@ function tweenSearch(sortedList, time, low, high, comparator) {
   }
 }
 
-
 // -----------------------------------
 // Binary search
 
@@ -68,7 +67,6 @@ function binarySearch(sortedList, target, low, high, comparator) {
     return binarySearch(sortedList, target, mid+1, high, comparator)
   }
 }
-
 
 // -----------------------------------
 // Keyframe interpolation
@@ -142,7 +140,6 @@ const search = {
     return tweenSearch(sortedList, time, 0, sortedList.length - 1, comparator)
   }
 }
-
 
 // -------------------------------------------------
 // util library
