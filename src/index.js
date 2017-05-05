@@ -79,6 +79,27 @@ function timingToInterpFn(timing, lib) {
   return map[timing] || map.linear
 }
 
+function keyframeInterpolateTween(keyframes, time, timing, lib) {
+  // Clamp time to [0, 1]
+  time = Math.max(Math.min(time, 1), 0)
+
+  if (!Array.isArray(keyframes) || !keyframes.length) {
+    return lib.zero()
+  }
+
+  const result = search.tween(keyframes, time)
+
+  if (result.length == 1) {
+    return result[0].value
+  }
+
+  const [a, b] = result
+
+  const t_segment = (time - a.stop) / (b.stop - a.stop)
+  const interpolate = timingToInterpFn(timing, lib)
+  return interpolate(a.value, b.value, t_segment)
+}
+
 function keyframeInterpolateBinary(keyframes, time, timing, lib) {
   const first = 0
   const last = keyframes.length - 1
