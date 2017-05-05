@@ -237,7 +237,7 @@ const scalar = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=scalar) {
-    return keyframeInterpolateBinary(keyframes, time, timing, lib)
+    return keyframeInterpolateTween(keyframes, time, timing, lib)
   }
 }
 
@@ -268,7 +268,7 @@ const vector2d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector2d) {
-    return keyframeInterpolateBinary(keyframes, time, timing, lib)
+    return keyframeInterpolateTween(keyframes, time, timing, lib)
   }
 }
 
@@ -301,7 +301,7 @@ const vector3d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector3d) {
-    return keyframeInterpolateBinary(keyframes, time, timing, lib)
+    return keyframeInterpolateTween(keyframes, time, timing, lib)
   }
 }
 
