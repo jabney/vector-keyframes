@@ -1,5 +1,10 @@
 # Change log for Vector Keyframes
 
+## [v0.2.3] - 05-05-2017
+### Changed
+- Fixed issue where custom interpolator falls down when tween search
+  returns a single keyframe
+
 ## [v0.2.2] - 04-05-2017
 ### Changed
 - Implement tweenSearch for keyframeInterpolate
