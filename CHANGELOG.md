@@ -1,5 +1,9 @@
 # Change log for Vector Keyframes
 
+## [v0.2.1] - 04-05-2017
+### Changed
+- Implement tweenSearch for keyframeInterpolate
+
 ## [v0.1.4] - 01-05-2017
 ### Changed
 - Minor refactoring
