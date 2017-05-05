@@ -153,30 +153,3 @@ console.log('------')
 exCustom()
 
 console.log()
-
-// const tweenSearch = require('./index').search.tweenSearch
-
-// const list = [
-//   {stop: 1},
-//   {stop: 2},
-//   {stop: 3},
-//   {stop: 4},
-//   {stop: 5},
-//   {stop: 6},
-//   {stop: 7},
-//   {stop: 8},
-//   {stop: 9},
-//   {stop: 10},
-// ]
-
-// let list = []
-// for (let i = 0; i < 9; i++) {
-//   list.push({stop: Math.random()})
-// }
-// list = list.sort((a, b) => a.stop - b.stop)
-
-// console.log('low, high:', list[0], list[list.length-1])
-// let time = 4 // Math.random()
-// console.log('time:', time)
-// const result = tweenSearch(list, time)
-// console.log(result)
