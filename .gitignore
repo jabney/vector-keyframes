@@ -40,3 +40,6 @@ jspm_packages
 /index.js
 /example.js
 /test/
+
+# VS Code
+.vscode/
