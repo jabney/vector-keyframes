@@ -2,7 +2,6 @@ const assert = require('assert')
 const _ = require('lodash')
 const vk = require('../index')
 const search = vk.search
-const util = vk.util
 
 describe('binary search', function () {
   it('returns null for an empty list', function () {
