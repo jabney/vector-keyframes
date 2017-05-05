@@ -147,33 +147,52 @@ describe('tweenSearch', function () {
     })
   })
 
-  describe('random', function () {
-    it('returns the correct range in a long list of keyframes', function () {
+  it('finds keyframes in O(lg(n)) time', function () {
+    const maxSize = 1e3
+    const skip = 100
+
+    // Generate lists of size [skip, maxSize]
+    for (let size = skip; size <= maxSize; size += skip) {
+      let maxCompares = 0
       let keyframes = []
-      let size = 1000
 
       for (let i = 0; i < size; i++) {
         keyframes.push({stop: Math.random()})
       }
-      util.keyframeSort(keyframes)
 
-      for (let i = 0; i < 2*size; i++) {
-        let time = Math.random()
-        let result = search.tween(keyframes, time)
+      for (let i = 0; i < size; ++i) {
+        let compares = 0
+        let time = i/size
 
-        if (result.length == 1) {
-          if (time < 0.5) {
-            assert(time <= result[0].stop, 'time is le low end')
+        search.tween(keyframes, time, function (a, b, time) {
+          maxCompares = Math.max(maxCompares, ++compares)
+
+          if (a.stop <= time && time < b.stop) {
+            return 0
           } else {
-            assert(time >= result[0].stop, 'time is ge high end')
+            if (time < a.stop) {
+              return -1
+            } else {
+              return 1
+            }
           }
-        } else if (result.length == 2) {
-          assert(result[0].stop <= time && time < result[1].stop,
-            'time is between keyframe pair')
-        } else {
-          assert(false, 'list lengths should be 1 or 2')
-        }
+        })
+
+        assert(maxCompares <= Math.floor(Math.log2(size)) + 1,
+          'maxCompares <= log2(list_size) + 1')
       }
-    })
+    }
+
   })
 })
+
+function timeIt(n, callback) {
+  let start = process.hrtime()
+
+  for (let i = 0; i < n; ++i) {
+    callback()
+  }
+  let timeTuple = process.hrtime(start)
+
+  return timeTuple[0] * 1e9 + timeTuple[1]
+}
