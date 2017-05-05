@@ -2,7 +2,19 @@
 // -----------------------------------
 // Tween search
 
-function tweenSearch(sortedList, time, low, high, witness) {
+function tweenComparator(a, b, time) {
+  if (a.stop <= time && time < b.stop) {
+    return 0
+  } else {
+    if (time < a.stop) {
+      return -1
+    } else {
+      return 1
+    }
+  }
+}
+
+function tweenSearch(sortedList, time, low, high, comparator) {
   let mid = Math.floor((low + high) / 2)
   let len = sortedList.length
 
@@ -13,13 +25,15 @@ function tweenSearch(sortedList, time, low, high, witness) {
   let a = sortedList[mid]
   let b = sortedList[mid+1]
 
-  if (a.stop <= time && time < b.stop) {
+  let result = comparator(a, b, time)
+
+  if (result == 0) {
     return [a, b]
   } else {
-    if (time < a.stop) {
-      return tweenSearch(sortedList, time, low, mid-1)
+    if (result < 0) {
+      return tweenSearch(sortedList, time, low, mid-1, comparator)
     } else {
-      return tweenSearch(sortedList, time, mid+1, high)
+      return tweenSearch(sortedList, time, mid+1, high, comparator)
     }
   }
 }
@@ -28,7 +42,7 @@ function tweenSearch(sortedList, time, low, high, witness) {
 // -----------------------------------
 // Binary search
 
-function defaultComparator(candidate, target) {
+function binaryComparator(candidate, target) {
   if (target < candidate) {
     return -1
   } else if (target > candidate) {
@@ -120,12 +134,12 @@ function keyframeInterpolateBinary(keyframes, time, timing, lib) {
 
 const search = {
 
-  binary(sortedList, target, comparator=defaultComparator) {
+  binary(sortedList, target, comparator=binaryComparator) {
     return binarySearch(sortedList, target, 0, sortedList.length-1, comparator)
   },
 
-  tween(sortedList, time) {
-    return tweenSearch(sortedList, time, 0, sortedList.length - 1)
+  tween(sortedList, time, comparator=tweenComparator) {
+    return tweenSearch(sortedList, time, 0, sortedList.length - 1, comparator)
   }
 }
 
