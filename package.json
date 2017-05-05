@@ -20,7 +20,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "build": "babel src -d .",
+    "build": "babel src -d . --source-maps",
     "test": "npm run build && mocha",
     "prepublish": "npm run build"
   }
