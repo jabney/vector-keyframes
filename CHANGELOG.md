@@ -1,5 +1,9 @@
 # Change log for Vector Keyframes
 
+## [v0.2.5] - 06-05-2017
+### Changed
+- Remove binary search
+
 ## [v0.2.4] - 05-05-2017
 ### Changed
 - Use alternate value midpoint calculation
