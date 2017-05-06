@@ -1,5 +1,9 @@
 # Change log for Vector Keyframes
 
+## [v0.2.4] - 05-05-2017
+### Changed
+- Use alternate value midpoint calculation
+
 ## [v0.2.3] - 05-05-2017
 ### Changed
 - Fixed issue where custom interpolator falls down when tween search
