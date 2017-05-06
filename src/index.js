@@ -15,7 +15,7 @@ function tweenComparator(a, b, time) {
 }
 
 function tweenSearch(sortedList, time, low, high, comparator) {
-  let mid = Math.floor((low + high) / 2)
+  let mid = Math.floor(low + ((high-low) / 2))
   let len = sortedList.length
 
   if (len == 0) return null
@@ -56,7 +56,7 @@ function binarySearch(sortedList, target, low, high, comparator) {
     return null
   }
 
-  const mid = Math.floor((low + high) / 2)
+  const mid = Math.floor(low + ((high-low) / 2))
   const result = comparator(sortedList[mid], target)
 
   if (result === 0) {
