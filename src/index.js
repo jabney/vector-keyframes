@@ -39,36 +39,6 @@ function tweenSearch(sortedList, time, low, high, comparator) {
 }
 
 // -----------------------------------
-// Binary search
-
-function binaryComparator(candidate, target) {
-  if (target < candidate) {
-    return -1
-  } else if (target > candidate) {
-    return 1
-  } else {
-    return 0
-  }
-}
-
-function binarySearch(sortedList, target, low, high, comparator) {
-  if (high < low) {
-    return null
-  }
-
-  const mid = Math.floor(low + ((high-low) / 2))
-  const result = comparator(sortedList[mid], target)
-
-  if (result === 0) {
-    return sortedList[mid]
-  } else if (result < 0) {
-    return binarySearch(sortedList, target, low, mid-1, comparator)
-  } else {
-    return binarySearch(sortedList, target, mid+1, high, comparator)
-  }
-}
-
-// -----------------------------------
 // Keyframe interpolation
 
 function timingToInterpFn(timing, lib) {
@@ -79,7 +49,7 @@ function timingToInterpFn(timing, lib) {
   return map[timing] || map.linear
 }
 
-function keyframeInterpolateTween(keyframes, time, timing, lib) {
+function keyframeInterpolate(keyframes, time, timing, lib) {
   // Clamp time to [0, 1]
   time = Math.max(Math.min(time, 1), 0)
 
@@ -100,62 +70,11 @@ function keyframeInterpolateTween(keyframes, time, timing, lib) {
   return interpolate(a.value, b.value, t_segment)
 }
 
-function keyframeInterpolateBinary(keyframes, time, timing, lib) {
-  const first = 0
-  const last = keyframes.length - 1
-
-  // Clamp time to [0, 1]
-  time = Math.max(Math.min(time, 1), 0)
-
-  if (!Array.isArray(keyframes) || !keyframes.length) {
-    return lib.zero()
-  }
-
-  if (keyframes.length === 1) {
-    return keyframes[first].value
-  }
-
-  if (time < keyframes[first].stop) {
-    return keyframes[first].value
-  }
-
-  if (time > keyframes[last].stop) {
-    return keyframes[last].value
-  }
-
-  const pairs = []
-  keyframes.reduce((a, b) => {
-    pairs.push([a, b])
-    return b
-  })
-
-  const pair = search.binary(pairs, time, pair => {
-    const [a, b] = pair
-
-    if (time < a.stop) { return -1 }
-    else if (time > b.stop) { return 1 }
-    return 0
-  })
-
-  if (pair != null) {
-    const [a, b] = pair
-    const t_segment = (time - a.stop) / (b.stop - a.stop)
-    const interpolate = timingToInterpFn(timing, lib)
-    return interpolate(a.value, b.value, t_segment)
-  }
-
-  return lib.zero()
-}
-
 // -------------------------------------------------
 // search library
 // -------------------------------------------------
 
 const search = {
-
-  binary(sortedList, target, comparator=binaryComparator) {
-    return binarySearch(sortedList, target, 0, sortedList.length-1, comparator)
-  },
 
   tween(sortedList, time, comparator=tweenComparator) {
     return tweenSearch(sortedList, time, 0, sortedList.length - 1, comparator)
@@ -237,7 +156,7 @@ const scalar = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=scalar) {
-    return keyframeInterpolateTween(keyframes, time, timing, lib)
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
@@ -268,7 +187,7 @@ const vector2d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector2d) {
-    return keyframeInterpolateTween(keyframes, time, timing, lib)
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
@@ -301,7 +220,7 @@ const vector3d = {
   },
 
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector3d) {
-    return keyframeInterpolateTween(keyframes, time, timing, lib)
+    return keyframeInterpolate(keyframes, time, timing, lib)
   }
 }
 
