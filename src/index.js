@@ -103,7 +103,7 @@ const util = {
    * @returns {float}
    */
   smooth(t) {
-    let time = Math.max(t, Math.min(t, 1), 0)
+    const time = Math.max(t, Math.min(t, 1), 0)
     return 3 * Math.pow(time, 2) - 2 * Math.pow(time, 3)
   },
 
