@@ -50,8 +50,6 @@ function timingToInterpFn(timing, lib) {
 }
 
 function keyframeInterpolate(keyframes, time, timing, lib) {
-  // Clamp time to [0, 1]
-  time = Math.max(Math.min(time, 1), 0)
 
   if (!Array.isArray(keyframes) || !keyframes.length) {
     return lib.zero()
