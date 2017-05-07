@@ -1,5 +1,10 @@
 # Change log for Vector Keyframes
 
+## [v0.2.6] - 06-05-2017
+### Changed
+- Don't clamp time parameter in keyframeInterpolate
+- JSDoc comments
+
 ## [v0.2.5] - 06-05-2017
 ### Changed
 - Remove binary search
