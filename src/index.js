@@ -76,6 +76,15 @@ function keyframeInterpolate(keyframes, time, timing, lib) {
 
 const search = {
 
+  /**
+   * Find the keyframe or keyframe pair closest to a given time
+   * @param {keyframe[]} sortedList a list of keyframes sorted
+   * by 'stop', e.g, [{stop: 0.1}, {stop: 0.3}, {stop: 0.5}]
+   * @param {number} time the time nearest to the desired keyframe
+   * or keyframe pair
+   * @param {function} comparator the search comparator function, e.g.,
+   * (candidate:keyframe, target:keyframe) => number
+   */
   tween(sortedList, time, comparator=tweenComparator) {
     return tweenSearch(sortedList, time, 0, sortedList.length - 1, comparator)
   }
@@ -91,14 +100,17 @@ const util = {
    * Smooth a parameter in the range 0 <= t <= 1 in a manner
    * that approximates cosine.
    * @param {float} t interpolation parameter in the range [0, 1]
+   * @returns {float}
    */
   smooth(t) {
     return 3 * Math.pow(t, 2) - 2 * Math.pow(t, 3)
   },
 
   /**
-   * Convert a three-element array
+   * Convert a 3d byte vector to a hex color string,
+   * e.g, [0, 127, 255] -> #007fff
    * @param {number[]} vector a three-element array
+   * @returns {string}
    */
   vector3dToHex(vector) {
     const hexColor = '#' + vector.slice(0,3).map((c) => {
@@ -110,6 +122,12 @@ const util = {
     return hexColor
   },
 
+  /**
+   * Convert a hex color string to a 3d byte vector,
+   * e.g, #007fff -> [0, 127, 255]
+   * @param {string} hexColor
+   * @returns {number[]}
+   */
   hexToVector3d(hexColor) {
     const hex = hexColor.slice(1)
     const r = parseInt(hex.slice(0, 2), 16)
@@ -118,6 +136,12 @@ const util = {
     return [r, g, b]
   },
 
+  /**
+   * Convert a 3d byte vector to an rgb color string,
+   * e.g., [0, 127, 255] -> 'rgb(0,127,255)'
+   * @param {number[]}
+   * @returns {string}
+   */
   vector3dToRgb(vector) {
     vector = vector.slice(0,3).map(function (byte) {
       return Math.round(byte)
@@ -125,6 +149,12 @@ const util = {
     return 'rgb(' + vector + ')'
   },
 
+  /**
+   * Convert an rgb color string to a 3d byte vector,
+   * e.g., 'rgb(0,127,255)' -> [0, 127, 255]
+   * @param {string} rgbColor
+   * @returns {number[]}
+   */
   rgbToVector3d(rgbColor) {
     var list = rgbColor.split(/[(), ]+/)
     return list.slice(1,4).map(function (s) {
@@ -132,6 +162,14 @@ const util = {
     })
   },
 
+  /**
+   * Sort a list of keyframes in place, or any list of objects
+   * with a numerical 'stop' property
+   * @param {keyframe[]} keyframes a list of keyframes in
+   * the form, e.g.,  [{stop: 0.5}, {stop: 0.1}, {stop: 0.95}]
+   * @returns {keyframe[]}
+   *
+   */
   keyframeSort(keyframes) {
     return keyframes.sort((a, b) => a.stop - b.stop)
   }
