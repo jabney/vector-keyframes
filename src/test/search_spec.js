@@ -63,7 +63,7 @@ describe('tweenSearch', function () {
     it('returns the correct range in a long list of keyframes', function () {
       let keyframes = []
       let size = 1000
-      for (let i = 0; i <= size; i++) {
+      for (let i = 1; i < size; i++) {
         keyframes.push({stop: i/size})
       }
 
@@ -73,8 +73,10 @@ describe('tweenSearch', function () {
 
         if (result.length == 1) {
           if (time < 0.5) {
+            console.log('low')
             assert(time <= result[0].stop, 'time is le low end')
           } else {
+            console.log('high')
             assert(time >= result[0].stop, 'time is ge high end')
           }
         } else if (result.length == 2) {
