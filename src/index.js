@@ -168,7 +168,6 @@ const util = {
    * @param {keyframe[]} keyframes a list of keyframes in
    * the form, e.g.,  [{stop: 0.5}, {stop: 0.1}, {stop: 0.95}]
    * @returns {keyframe[]}
-   *
    */
   keyframeSort(keyframes) {
     return keyframes.sort((a, b) => a.stop - b.stop)
