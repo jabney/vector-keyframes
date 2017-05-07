@@ -37,7 +37,6 @@ const keyframes = [{
 }]
 
 // Pass the keyframes and the time parameter to interpolate.
-// The range for the time parameter is 0 to 1.
 const result = vector3d.keyframeInterpolate(keyframes, 0.25)
 console.log('vector    (t=0.25):', result)
 console.log('rgb color (t=0.25):', util.vector3dToRgb(result))
