@@ -1,6 +1,7 @@
 
 // -----------------------------------
 // Tween search
+// -----------------------------------
 
 function tweenComparator(a, b, time) {
   if (a.stop <= time && time < b.stop) {
@@ -40,6 +41,7 @@ function tweenSearch(sortedList, time, low, high, comparator) {
 
 // -----------------------------------
 // Keyframe interpolation
+// -----------------------------------
 
 function timingToInterpFn(timing, lib) {
   let map = {
@@ -178,18 +180,45 @@ const util = {
 
 const scalar = {
 
+  /**
+   * Return zero
+   * @returns {number}
+   */
   zero() {
     return 0
   },
 
+  /**
+   * Interpolate between a and b for a factor of t
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   linearInterpolate(a, b, t) {
     return a + t*(b-a)
   },
 
+  /**
+   * Interpolate between a and b for a factor of t
+   * with a smooth, ease in, ease out type effect
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   smoothInterpolate(a, b, t) {
     return a + util.smooth(t)*(b-a)
   },
 
+  /**
+   * Interpolate with keyframes, e.g.,
+   * [{stop: 0.1, value: 10}, {stop: 0.5, value: 20}, {stop: 0.9, value: 30}]
+   * @param {keyframe[]} keyframes a list of keyframes
+   * @param {number} time the time nearest the keyframe stop
+   * @param {'linear'|'smooth'} timing interpolation timing
+   * @param {object} lib the interpolation library to use
+   */
   keyframeInterpolate(keyframes, time, timing='linear', lib=scalar) {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
@@ -201,10 +230,20 @@ const scalar = {
 
 const vector2d = {
 
+  /**
+   * Return the zero vector
+   */
   zero() {
     return [0, 0]
   },
 
+  /**
+   * Interpolate between vectors a and b for a factor of t
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   linearInterpolate(a, b, t) {
     const lerp = scalar.linearInterpolate
     return [
@@ -213,6 +252,14 @@ const vector2d = {
     ]
   },
 
+  /**
+   * Interpolate between vectors a and b for a factor of t
+   * with a smooth, ease in, ease out type effect
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   smoothInterpolate(a, b, t) {
     const lerp = scalar.smoothInterpolate
     return [
@@ -221,6 +268,18 @@ const vector2d = {
     ]
   },
 
+  /**
+   * Interpolate with keyframes, e.g.,
+   * [
+   *   {stop: 0.1, value: [0, 100]},
+   *   {stop: 0.5, value: [100, 100]},
+   *   {stop: 0.9, value: [100, 0]}
+   * ]
+   * @param {keyframe[]} keyframes a list of keyframes
+   * @param {number} time the time nearest the keyframe stop
+   * @param {'linear'|'smooth'} timing interpolation timing
+   * @param {object} lib the interpolation library to use
+   */
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector2d) {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
@@ -232,10 +291,20 @@ const vector2d = {
 
 const vector3d = {
 
+  /**
+   * Return the zero vector
+   */
   zero() {
     return [0, 0, 0]
   },
 
+  /**
+   * Interpolate between vectors a and b for a factor of t
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   linearInterpolate(a, b, t) {
     const lerp = scalar.linearInterpolate
     return [
@@ -245,6 +314,14 @@ const vector3d = {
     ]
   },
 
+  /**
+   * Interpolate between vectors a and b for a factor of t
+   * with a smooth, ease in, ease out type effect
+   * @param {number} a the start value
+   * @param {number} b the end value
+   * @param {number} t the time parameter
+   * @returns {number} the interpolated value
+   */
   smoothInterpolate(a, b, t) {
     const lerp = scalar.smoothInterpolate
     return [
@@ -254,6 +331,18 @@ const vector3d = {
     ]
   },
 
+  /**
+   * Interpolate with keyframes, e.g.,
+   * [
+   *   {stop: 0.1, value: [0, 100]},
+   *   {stop: 0.5, value: [100, 100]},
+   *   {stop: 0.9, value: [100, 0]}
+   * ]
+   * @param {keyframe[]} keyframes a list of keyframes
+   * @param {number} time the time nearest the keyframe stop
+   * @param {'linear'|'smooth'} timing interpolation timing
+   * @param {object} lib the interpolation library to use
+   */
   keyframeInterpolate(keyframes, time, timing='linear', lib=vector3d) {
     return keyframeInterpolate(keyframes, time, timing, lib)
   }
