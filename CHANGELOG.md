@@ -1,5 +1,10 @@
 # Change log for Vector Keyframes
 
+## [v0.2.7] - 08-05-2017
+### Changed
+- Clamp time value in smooth method to [0, 1]
+- Add a test spec for custom interplators
+
 ## [v0.2.6] - 06-05-2017
 ### Changed
 - Don't clamp time parameter in keyframeInterpolate
@@ -11,7 +16,7 @@
 
 ## [v0.2.4] - 05-05-2017
 ### Changed
-- Use alternate value midpoint calculation
+- Use alternate value midpoint calculation in tweenSearch
 
 ## [v0.2.3] - 05-05-2017
 ### Changed
