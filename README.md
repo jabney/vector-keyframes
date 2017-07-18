@@ -3,6 +3,8 @@
 # vector-keyframes
 Interpolate between any number of scalar, 2d, or 3d vector keyframes with a focus on colors
 
+[![Build Status](https://travis-ci.org/jabney/vector-keyframes.svg?branch=master)](https://travis-ci.org/jabney/vector-keyframes)
+
 ## Installation
 
     npm install vector-keyframes
