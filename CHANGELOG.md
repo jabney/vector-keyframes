@@ -1,5 +1,8 @@
 # Change log for Vector Keyframes
 
+## [v0.2.10] - 2017-07-18
+Add code coverage reports to test script
+
 ## [v0.2.9] - 2017-07-18
 Update readme
 
