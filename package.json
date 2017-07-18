@@ -18,10 +18,13 @@
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "codecov": "^2.2.0",
+    "istanbul": "^0.4.5"
+  },
   "scripts": {
     "build": "babel src -d . --source-maps",
-    "test": "npm run build && mocha",
+    "test": "npm run build && istanbul cover node_modules/mocha/bin/_mocha && codecov -t 7831f5c4-8624-4b44-8da4-b573fbfd3739",
     "prepublish": "npm run build"
   }
 }
