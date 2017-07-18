@@ -47,20 +47,3 @@ describe('custom interplation lib', function () {
   })
 
 })
-
-
-
-// console.log('linear   (t=0):',
-//   alpha.keyframeInterpolate(keyframes, 0, 'linear'))
-
-// console.log('linear (t=0.5):',
-//   alpha.keyframeInterpolate(keyframes, 0.5, 'linear'))
-
-// console.log('linear   (t=1):',
-//   alpha.keyframeInterpolate(keyframes, 1, 'linear'))
-
-// console.log('linear (t=0.1):',
-//   alpha.keyframeInterpolate(keyframes, 0.1, 'linear'))
-
-// console.log('smooth (t=0.1):',
-//   alpha.keyframeInterpolate(keyframes, 0.1, 'smooth'))
