@@ -3,6 +3,9 @@
 ## [v0.2.8] - 2017-07-18
 Update readme
 
+## [v0.2.9] - 2017-07-18
+Update readme
+
 ## [v0.2.7] - 08-05-2017
 ### Changed
 - Clamp time value in smooth method to [0, 1]
