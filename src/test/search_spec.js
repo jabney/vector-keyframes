@@ -73,10 +73,8 @@ describe('tweenSearch', function () {
 
         if (result.length == 1) {
           if (time < 0.5) {
-            console.log('low')
             assert(time <= result[0].stop, 'time is le low end')
           } else {
-            console.log('high')
             assert(time >= result[0].stop, 'time is ge high end')
           }
         } else if (result.length == 2) {
