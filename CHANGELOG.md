@@ -1,9 +1,9 @@
 # Change log for Vector Keyframes
 
-## [v0.2.8] - 2017-07-18
+## [v0.2.9] - 2017-07-18
 Update readme
 
-## [v0.2.9] - 2017-07-18
+## [v0.2.8] - 2017-07-18
 Update readme
 
 ## [v0.2.7] - 08-05-2017
