@@ -1,6 +1,6 @@
 {
   "name": "vector-keyframes",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Interpolate between any number of 2d or 3d vector keyframes",
   "keywords": [
     "vector",
