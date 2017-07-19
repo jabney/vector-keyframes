@@ -13,18 +13,17 @@
   "author": "James Abney <james.abney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "lodash": "^4.17.4",
-    "mocha": "^3.3.0",
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0"
-  },
-  "dependencies": {
+    "babel-preset-env": "^1.4.0",
     "codecov": "^2.2.0",
-    "istanbul": "^0.4.5"
+    "istanbul": "^0.4.5",
+    "lodash": "^4.17.4",
+    "mocha": "^3.3.0"
   },
+  "dependencies": {},
   "scripts": {
     "build": "babel src -d . --source-maps",
-    "test": "npm run build && istanbul cover node_modules/mocha/bin/_mocha && codecov -t 7831f5c4-8624-4b44-8da4-b573fbfd3739",
+    "test": "npm run build && istanbul cover node_modules/mocha/bin/_mocha && codecov",
     "prepublish": "npm run build"
   }
 }
