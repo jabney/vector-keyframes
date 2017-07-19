@@ -1,5 +1,8 @@
 # Change log for Vector Keyframes
 
+## [v0.2.12] - 2017-07-18
+Dependency reconfiguration
+
 ## [v0.2.11] - 2017-07-18
 Add codecov badge
 
