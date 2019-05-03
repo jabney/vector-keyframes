@@ -23,7 +23,7 @@
   "dependencies": {},
   "scripts": {
     "build": "babel src -d . --source-maps",
-    "test": "mocha",
+    "test": "npm run build && mocha",
     "cover": "npm run build && istanbul cover node_modules/mocha/bin/_mocha",
     "codecov": "codecov",
     "prepublish": "npm run build"
