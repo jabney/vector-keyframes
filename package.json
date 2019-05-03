@@ -13,12 +13,12 @@
   "author": "James Abney <james.abney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0",
-    "codecov": "^2.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "codecov": "^3.3.0",
     "istanbul": "^0.4.5",
-    "lodash": "^4.17.4",
-    "mocha": "^3.3.0"
+    "lodash": "^4.17.11",
+    "mocha": "^6.1.4"
   },
   "dependencies": {},
   "scripts": {
