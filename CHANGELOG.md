@@ -1,5 +1,8 @@
 # Change log for Vector Keyframes
 
+## [v0.2.15] - 2019-05-03
+Remove `node 4` from `travis.yml`.
+
 ## [v0.2.14] - 2019-05-03
 npm audit fix
 
