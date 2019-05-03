@@ -1,5 +1,8 @@
 # Change log for Vector Keyframes
 
+## [v0.2.14] - 2019-05-03
+npm audit fix
+
 ## [v0.2.13] - 2019-05-03
 npm audit fix
 
